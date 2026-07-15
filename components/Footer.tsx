@@ -11,7 +11,7 @@ export default function Footer() {
             <Logo />
             <p className="mt-4 text-sm leading-relaxed text-muted">
               AI engineer and Ranger-shaped operator. Building practical systems
-              that turn complexity into momentum, drawing on advanced analytics experience at BP and IVP, now leading clinical AI engineering at KaiCare.ai.
+              that turn complexity into momentum, drawing on advanced analytics experience at BP and IVP, and clinical AI engineering at KaiCare.ai.
             </p>
           </div>
           <div className="grid grid-cols-2 gap-10">
@@ -40,7 +40,7 @@ export default function Footer() {
                 Elsewhere
               </span>
               <a
-                href="https://github.com/leowalker89"
+                href="https://github.com/leoalord"
                 className="text-fg/75 transition-colors hover:text-terracotta-500"
                 rel="noopener noreferrer"
                 target="_blank"

@@ -16,6 +16,7 @@ interface EventItem {
 }
 
 const proofPoints = [
+  "AI Engineer @ Lead The Way with AI",
   "AI Engineer @ KaiCare.ai",
   "Data Scientist @ IVP",
   "Data Scientist @ BP",
@@ -25,7 +26,7 @@ const proofPoints = [
 
 const timeline = [
   {
-    era: "2023 - Present",
+    era: "2025 - 2026",
     role: "AI Engineer",
     company: "KaiCare.ai",
     focus: "Deploying agentic workflows, MCP tooling, and compliance-aware systems.",
@@ -64,22 +65,25 @@ const repos = [
     url: "https://huggingface.co/spaces/LeoWalker/SearchArena",
     description:
       "A deployed HuggingFace comparison interface built to evaluate and benchmark search engine results and retrieval ranking models. Created June 2024.",
+    image: "/search_arena.png",
   },
   {
     name: "Resume & Job Description Parsers",
     url: "https://huggingface.co/spaces/LeoWalker/ResumeParser",
     description:
       "A dual-space deployment comprising an intelligent resume parser and a targeted job description formatter built to optimize candidate matchmaking. Created January 2024.",
+    image: "/resume_parser.png",
   },
   {
     name: "First Principles Thinking Skills",
-    url: "https://github.com/leowalker89/first-principles-thinking-skills",
+    url: "https://github.com/leoalord/first-principles-thinking-skills",
     description:
       "Chained agentic skills and system prompts engineered to drive structured first-principles reasoning inside tools like Cursor, Claude Code, and Codex CLI.",
+    image: "/thinking_skills.png",
   },
   {
     name: "LLM Composition Patterns",
-    url: "https://github.com/leowalker89/llm-composition-patterns",
+    url: "https://github.com/leoalord/llm-composition-patterns",
     description:
       "A robust Python codebase demonstrating structural design patterns for cascading, parallelizing, and deterministic evaluating complex LLM calls in production.",
   },
@@ -204,30 +208,48 @@ export default function Home() {
       {/* Home / Hero */}
       <section id="home" className="grain relative overflow-hidden scroll-mt-28">
         <div className="mx-auto max-w-content px-5 sm:px-8">
-          <p className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-sage-500/40 bg-sage-500/10 px-5 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-sage-500">
-            <span className="h-1.5 w-1.5 rounded-full bg-sage-400 animate-pulse" />
-            AI Engineer · Operator · Builder
-          </p>
-          <h1 className="max-w-4xl font-display text-3xl font-semibold leading-[1.1] tracking-tight text-fg sm:text-4xl lg:text-5xl">
-            I build <span className="bg-gradient-to-r from-sage-400 to-slateblue-400 bg-clip-text text-transparent font-semibold">effective AI systems</span> engineered for critical operations.
-          </h1>
-          <p className="mt-6 max-w-3xl font-sans text-base sm:text-lg lg:text-xl leading-relaxed text-fg/90">
-            AI Engineer at KaiCare.ai. I build secure, compliant AI agents that streamline clinical workflows, translating years of operational leadership and data science into reliable software.
-          </p>
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <Link
-              href="#work"
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-slateblue-500 px-6 py-3.5 text-sm font-semibold text-charcoal-base shadow-sm transition-all hover:bg-slateblue-600 hover:-translate-y-0.5"
-            >
-              See my work
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-            <Link
-              href="#story"
-              className="inline-flex items-center justify-center gap-2 rounded-lg border border-line px-6 py-3.5 text-sm font-semibold text-fg transition-all hover:border-terracotta-500/60 hover:text-terracotta-500 hover:-translate-y-0.5"
-            >
-              Read my story
-            </Link>
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
+            <div className="lg:col-span-7">
+              <p className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-sage-500/40 bg-sage-500/10 px-5 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-sage-500">
+                <span className="h-1.5 w-1.5 rounded-full bg-sage-400 animate-pulse" />
+                AI Engineer · Operator · Builder
+              </p>
+              <h1 className="max-w-4xl font-display text-3xl font-semibold leading-[1.1] tracking-tight text-fg sm:text-4xl lg:text-5xl">
+                I build <span className="bg-gradient-to-r from-sage-400 to-slateblue-400 bg-clip-text text-transparent font-semibold">effective AI systems</span> engineered for critical operations.
+              </h1>
+              <p className="mt-6 max-w-3xl font-sans text-base sm:text-lg lg:text-xl leading-relaxed text-fg/90">
+                I build, teach, and write about practical AI systems: agentic workflows, MCP/tooling, data pipelines, and clinical AI. Formerly AI Engineer at KaiCare.ai.
+              </p>
+              <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+                <Link
+                  href="#work"
+                  className="inline-flex items-center justify-center gap-2 rounded-lg bg-slateblue-500 px-6 py-3.5 text-sm font-semibold text-charcoal-base shadow-sm transition-all hover:bg-slateblue-600 hover:-translate-y-0.5"
+                >
+                  See my work
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link
+                  href="#story"
+                  className="inline-flex items-center justify-center gap-2 rounded-lg border border-line px-6 py-3.5 text-sm font-semibold text-fg transition-all hover:border-terracotta-500/60 hover:text-terracotta-500 hover:-translate-y-0.5"
+                >
+                  Read my story
+                </Link>
+              </div>
+            </div>
+
+            {/* Headshot column */}
+            <div className="lg:col-span-5 flex justify-center">
+              <div className="relative w-full max-w-sm">
+                <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-sage-500/20 via-transparent to-terracotta-500/15 blur-2xl pointer-events-none" />
+                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-line bg-surface/40 p-2 shadow-xl shadow-black/10">
+                  <img
+                    src="/headshot.jpg"
+                    alt="Leo Walker, AI engineer, in front of Colorado mountains"
+                    className="h-full w-full rounded-xl object-cover"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -246,7 +268,11 @@ export default function Home() {
                   className="hidden h-1.5 w-1.5 rounded-full bg-terracotta-500/50 sm:inline-block"
                 />
               )}
-              <span className="text-sm font-semibold uppercase tracking-widest text-muted">
+              <span
+                className={`text-sm font-semibold uppercase tracking-widest ${
+                  i === 0 ? "text-sage-500" : "text-muted"
+                }`}
+              >
                 {point}
               </span>
             </li>

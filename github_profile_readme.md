@@ -1,6 +1,6 @@
 # Leo Walker
 
-AI Engineer at **[KaiCare.ai](https://kaicare.ai)** shipping secure clinical agent systems. Former US Army Ranger logistics leader, growth equity data scientist (IVP), and energy ML engineer (BP).
+AI Engineer and consultant via **[Lead The Way with AI](https://leadthewaywithai.com)**. I build, teach, and write about practical AI systems. Formerly AI Engineer at KaiCare.ai. US Army Ranger veteran, growth equity data scientist (IVP), and energy ML engineer (BP).
 
 <p align="left">
   <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python" />
@@ -16,8 +16,8 @@ AI Engineer at **[KaiCare.ai](https://kaicare.ai)** shipping secure clinical age
 ---
 
 ### Deployed Systems & Open Source
-* **[LLM Composition Patterns](https://github.com/leowalker89/llm-composition-patterns)**: A Python library demonstrating structural patterns (cascades, parallel execution, routing, evaluations) for deterministic LLM agent execution.
-* **[First Principles Thinking Skills](https://github.com/leowalker89/first-principles-thinking-skills)**: Chained agentic skills and system prompts engineered to drive structured first-principles reasoning inside tools like Cursor and Claude Code.
+* **[LLM Composition Patterns](https://github.com/leoalord/llm-composition-patterns)**: A Python library demonstrating structural patterns (cascades, parallel execution, routing, evaluations) for deterministic LLM agent execution.
+* **[First Principles Thinking Skills](https://github.com/leoalord/first-principles-thinking-skills)**: Chained agentic skills and system prompts engineered to drive structured first-principles reasoning inside tools like Cursor and Claude Code.
 * **[Search Arena](https://huggingface.co/spaces/LeoWalker/SearchArena)**: Deployed comparison interface built to evaluate and benchmark search engine results and retrieval ranking models side-by-side.
 * **[Resume & Job Parsers](https://huggingface.co/spaces/LeoWalker/ResumeParser)**: Dual NLP matchmaking spaces designed to parse and match candidates to target job descriptions.
 
@@ -31,7 +31,7 @@ AI Engineer at **[KaiCare.ai](https://kaicare.ai)** shipping secure clinical age
 ---
 
 ### Active Operations & Background
-* **AI Engineer @ [KaiCare.ai](https://kaicare.ai)**: Architecting secure clinical agents optimizing remote patient monitoring (RPM) and chronic care workflows.
+* **AI Engineer @ KaiCare.ai (2025–2026)**: Shipped HIPAA-compliant agentic workflows for 700+ patients, built internal MCP servers, and owned product + engineering for clinical MA workflows.
 * **Chapter Lead @ MLOps Community**: Coordinating events and co-hosting the Coding Agents Lunch & Learn series.
 * **Founder @ [Lead The Way with AI](https://leadthewaywithai.com)**: Direct engineering consulting, technical stack due diligence, and developer training workshops.
 * **Background**: MS in Data Science (University of Denver, GPA 3.8), BS in Electrical & Computer Engineering (VMI). 6 years in the US Army (75th Ranger Regiment).

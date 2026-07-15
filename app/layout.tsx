@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     "healthcare AI",
     "Leo Walker",
     "75th Ranger Regiment",
-    "KaiCare.ai",
+    "LTWwAI",
   ],
   authors: [{ name: "Leo Walker" }],
   openGraph: {

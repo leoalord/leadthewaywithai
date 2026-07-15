@@ -1,6 +1,6 @@
 # Lead The Way with AI
 
-Personal portfolio site for **Leo Walker** — AI Engineer at KaiCare.ai. A clean,
+Personal portfolio site for **Leo Lord** — AI Engineer and consultant via LTWwAI. A clean,
 minimal, static informational site built around practical AI systems, healthcare
 AI, agentic workflows, and teaching/writing.
 

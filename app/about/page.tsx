@@ -4,7 +4,15 @@ import Link from "next/link";
 
 const timeline = [
   {
-    era: "2023 - Present",
+    era: "2024 - Present",
+    role: "AI Engineer & Founder",
+    company: "Lead The Way with AI",
+    focus: "Consulting, workshops, and writing on practical AI systems.",
+    principle: "Practical AI over hype: shipping and teaching systems teams can actually run.",
+    description: "Independent AI engineering and consulting since 2024. Building agentic workflows and MCP tooling for clients, running hands-on training for engineering teams, providing technical due diligence for investors, and co-hosting the MLOps Community Coding Agents series. Consulting work with KaiCare.ai grew into a full-time engagement from 2025 to 2026.",
+  },
+  {
+    era: "2025 - 2026",
     role: "AI Engineer",
     company: "KaiCare.ai",
     focus: "Deploying agentic workflows, MCP tooling, and compliance-aware systems.",
@@ -54,7 +62,10 @@ function ArrowRight({ className }: { className?: string }) {
 function CompanyLogo({ company, className }: { company: string; className?: string }) {
   let src = "";
   let alt = "";
-  if (company.includes("KaiCare")) {
+  if (company.includes("Lead The Way")) {
+    src = "/icon.svg";
+    alt = "Lead The Way with AI logo";
+  } else if (company.includes("KaiCare")) {
     src = "/logos/kaicare.png";
     alt = "KaiCare.ai logo";
   } else if (company.includes("IVP")) {
@@ -111,7 +122,7 @@ export default function About() {
                 My background spans machine learning engineering, growth equity due diligence, heavy-industry energy analytics, and tactical leadership as a Ranger veteran.
               </p>
               <p className="mt-4 font-sans text-base sm:text-lg leading-relaxed text-fg/80">
-                Whether automating emissions pipelines at BP, benchmark-analyzing growth portfolios at IVP, or architecting HIPAA-grade clinical AI agents at KaiCare.ai, I anchor my engineering in strict process control, structured reasoning, and reliability under load.
+                Whether automating emissions pipelines at BP, benchmark-analyzing growth portfolios at IVP, or shipping HIPAA-compliant agentic systems at KaiCare.ai, I anchor my engineering in strict process control, structured reasoning, and reliability under load.
               </p>
             </div>
             
@@ -125,7 +136,7 @@ export default function About() {
                 <img 
                   src="/headshot.jpg" 
                   alt="Leo Walker Headshot" 
-                  className="w-full h-full rounded-xl object-cover transition-all duration-700 ease-out group-hover:scale-[1.03] filter grayscale contrast-[1.05] brightness-95 group-hover:grayscale-0 group-hover:brightness-100 group-hover:contrast-100"
+                  className="w-full h-full rounded-xl object-cover transition-all duration-700 ease-out group-hover:scale-[1.03]"
                 />
               </div>
             </div>

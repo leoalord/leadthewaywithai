@@ -2,6 +2,7 @@ type RepoCardProps = {
   name: string;
   url: string;
   description: string;
+  image?: string;
 };
 
 function GitHubMark() {
@@ -17,7 +18,7 @@ function GitHubMark() {
   );
 }
 
-export default function RepoCard({ name, url, description }: RepoCardProps) {
+export default function RepoCard({ name, url, description, image }: RepoCardProps) {
   return (
     <a
       href={url}
@@ -25,6 +26,15 @@ export default function RepoCard({ name, url, description }: RepoCardProps) {
       rel="noopener noreferrer"
       className="group flex flex-col rounded-xl border border-line bg-surface/60 p-7 transition-all hover:-translate-y-0.5 hover:border-slateblue-500/40 hover:shadow-lg hover:shadow-black/5"
     >
+      {image && (
+        <div className="mb-6 -mx-2 -mt-2 overflow-hidden rounded-lg border border-line/40">
+          <img
+            src={image}
+            alt={`${name} preview`}
+            className="aspect-[16/10] w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+          />
+        </div>
+      )}
       <div className="flex items-center justify-between">
         <span className="text-muted transition-colors group-hover:text-fg">
           <GitHubMark />
