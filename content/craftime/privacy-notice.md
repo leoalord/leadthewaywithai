@@ -1,7 +1,9 @@
 # CraftiMe Privacy Notice
 
-**Notice version:** 1  
-**Effective date:** [PUBLICATION DATE]  
+**Notice version:** 1
+
+**Effective date:** September 25, 2026
+
 **Operator:** Lead The Way With AI LLC
 
 **Privacy contact:** support@ltww.ai
@@ -28,7 +30,7 @@ Please avoid including children’s names, faces, health information or other pr
 
 ## How we use information
 
-We use this information to sign you in, retrieve craft ideas, generate instructions, save and synchronize your crafts, maintain your plans and materials list, support offline reading, respond to requests, troubleshoot failures and protect the service. We may also process information when required to comply with law or resolve a legal claim.
+We use this information to sign you in, retrieve craft ideas, generate instructions, save and synchronize your crafts, maintain your plans and materials list, support offline reading, respond to requests, tell you about important changes to CraftiMe, such as the end of the beta, troubleshoot failures and protect the service. We may also process information when required to comply with law or resolve a legal claim.
 
 ## Your agreement to AI processing
 
@@ -47,16 +49,16 @@ When you import, what you chose is sent to CraftiMe’s servers on **Google Clou
 
 - **Google’s Gemini models on Vertex AI**, which read the source content (text, images, video and audio) or your photos and draft the craft instructions. We use Vertex AI’s global endpoint, so this processing may take place outside the United States. Under Google’s default settings, Google may cache model inputs in memory for up to 24 hours and may keep prompts flagged for possible abuse for up to 90 days. Generated instructions can be inaccurate; review them before using or saving them.
 - **Apify**, which retrieves public Instagram, Facebook and TikTok posts for us. We send Apify only the post’s link. For TikTok videos and Facebook Reels, Apify stores a copy of the public video until CraftiMe downloads it. After each import we ask Apify to delete that retrieval’s data, and we retry if deletion cannot be confirmed; until then Apify holds it under its own retention policy and may process it outside the United States. Photos are never sent to Apify.
-- **YouTube API Services**, which tell us whether a YouTube video is public and eligible and give us its channel name, which we show to credit the creator. We send YouTube only the video’s identifier. CraftiMe stores the channel name for a saved YouTube craft and refreshes or removes it within 30 days. By importing YouTube links you agree to be bound by the [YouTube Terms of Service](https://www.youtube.com/t/terms), and Google handles that request under the [Google Privacy Policy](https://www.google.com/policies/privacy).
+- **YouTube API Services**, which tell us whether a YouTube video is public and eligible and give us its channel name, which we show to credit the creator. We send YouTube only the video’s identifier. CraftiMe stores the channel name for a saved YouTube craft and refreshes or removes it within 30 days. By using CraftiMe, you agree to be bound by the [YouTube Terms of Service](https://www.youtube.com/t/terms), and Google handles that request under the [Google Privacy Policy](https://www.google.com/policies/privacy).
 - **Pinterest and websites.** Our server retrieves Pinterest pins from Pinterest and fetches the websites you import, plus at most one linked instructions page when a page has little text. If our server cannot read a public page, it may ask Gemini’s URL-context tool to read it; Google may use its web index or fetch the live page. We do not use this to get past sign-in, membership, payment or email gates.
 
 A public post can include its creator’s name, handle, image or voice; we use it to prepare your draft and credit the source. Importing does not give CraftiMe access to your social accounts, private messages, photo library or browsing history, and we never ask you to connect a social, YouTube or Google account. If you open an original source, its website or app handles your visit under its own privacy notice. Please import only content you are entitled to use, and avoid private links or material that reveals someone’s sensitive information.
 
-We share information only with the service providers named in this notice, and only as needed for their services. Google and Apify process it for us under data processing terms that limit its use to providing their services to us and require them to keep it secure and confidential, so it receives the same or equal protection as this notice describes.
+We share information only with the service providers named in this notice, and only as needed for their services. Google and Apify process it for us under data processing terms that limit its use to providing their services to us and require them to keep it secure and confidential, so it receives the same or equal protection as this notice describes. YouTube, Pinterest and the websites you import receive only our server’s request for public content, not your account or device information.
 
-We do not sell personal information, use it for targeted advertising, or track you across other companies’ apps and websites. CraftiMe contains no advertising or analytics software. Because we do not track you across other companies’ apps and websites, browser “Do Not Track” signals do not change how CraftiMe works.
+We do not sell personal information, use it for targeted advertising, or track you across other companies’ apps and websites. CraftiMe contains no advertising or analytics software. Because we do not track you across other companies’ apps and websites, browser “Do Not Track” signals do not change how CraftiMe works. We do not allow other companies to collect information about your activity over time or across other apps and websites through CraftiMe.
 
-We may disclose information where legally required, to respond to a lawful request, or when necessary to protect people and the security of the service. Such disclosures should be limited to what the circumstances require.
+We may disclose information where legally required, to respond to a lawful request, or when necessary to protect people and the security of the service. We limit such disclosures to what the circumstances require.
 
 ## Sharing
 
