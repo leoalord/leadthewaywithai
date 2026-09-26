@@ -2,11 +2,11 @@
 
 **Version:** 1
 
-**Effective date:** [PUBLICATION DATE]
+**Effective date:** September 25, 2026
 
 **Operator:** Lead The Way With AI LLC
 
-**Terms and account contact:** support@ltww.ai
+**Terms and account contact:** support@leadthewaywithai.com
 
 CraftiMe helps adults turn craft ideas from supported public sources into drafts they can review, edit and save. “We” and “us” mean Lead The Way With AI LLC. These Terms describe the free beta service offered in the United States to adults aged 18 or over. You must be at least 18 to create or use an account. An adult should supervise any craft activity involving a child.
 
@@ -46,7 +46,7 @@ To the extent the law allows, CraftiMe is provided as is and as available, witho
 
 The [CraftiMe Privacy Notice](https://www.leadthewaywithai.com/craftime/privacy) explains how information is handled when you use CraftiMe.
 
-You can delete your account at any time in the app under **Profile → Delete account**. Deleting your account withdraws your agreement to the AI processing described above; the Privacy Notice explains what deletion removes. To ask about your account, deletion or these Terms, contact support@ltww.ai.
+You can delete your account at any time in the app under **Profile → Delete account**. Deleting your account withdraws your agreement to the AI processing described above; the Privacy Notice explains what deletion removes. To ask about your account, deletion or these Terms, contact support@leadthewaywithai.com.
 
 ## Changes to these Terms
 

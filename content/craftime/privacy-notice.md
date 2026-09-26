@@ -6,7 +6,7 @@
 
 **Operator:** Lead The Way With AI LLC
 
-**Privacy contact:** support@ltww.ai
+**Privacy contact:** support@leadthewaywithai.com
 
 CraftiMe — think “Craft Time” — helps caregivers and children make, learn and spend time together. Adults can collect ideas from supported websites and apps, or from photos they choose, turn them into craft instructions, and prepare for an activity together. This notice explains how we handle information when you use CraftiMe or contact us. “We” means Lead The Way With AI LLC.
 
@@ -86,7 +86,7 @@ Signing out or uninstalling the app does not, by itself, delete your account or 
 
 ## Your choices and rights
 
-You can choose which links and photos to import, and edit or remove supported saved content. Deleting your account withdraws your agreement to AI processing. You can contact support@ltww.ai to ask about your information or request access, correction or deletion. We may ask for information needed to verify that the request concerns your account.
+You can choose which links and photos to import, and edit or remove supported saved content. Deleting your account withdraws your agreement to AI processing. You can contact support@leadthewaywithai.com to ask about your information or request access, correction or deletion. We may ask for information needed to verify that the request concerns your account.
 
 Depending on where you live, you may also have rights to obtain a copy of your information, restrict or object to certain processing, withdraw consent where processing relies on consent, and complain to a privacy regulator. Withdrawal does not affect processing already lawfully carried out.
 
@@ -94,7 +94,7 @@ Depending on where you live, you may also have rights to obtain a copy of your i
 
 CraftiMe supports activities that caregivers and children do together. Accounts are for adults aged 18 and over. CraftiMe is not directed to children, and we do not knowingly collect personal information from children. The account and import workflow is designed for the caregiver; a child does not need a separate account or profile to take part in the activity. We do not ask for a child’s name, birthday, school or health information to create a craft.
 
-Caregivers should avoid putting identifying information about children in imported links, photos, edits or support messages. If you believe we have received a child’s personal information inappropriately, contact support@ltww.ai so we can investigate and address it.
+Caregivers should avoid putting identifying information about children in imported links, photos, edits or support messages. If you believe we have received a child’s personal information inappropriately, contact support@leadthewaywithai.com so we can investigate and address it.
 
 ## Security and where information is processed
 
@@ -106,4 +106,4 @@ CraftiMe is offered only in the United States. Our application servers, database
 
 We will update this notice when our practices change, revise the effective date and increase the notice version for any substantive change. When the version increases, CraftiMe asks you to agree again before you continue using your account.
 
-For privacy questions, requests or complaints, contact **support@ltww.ai**. Tell us which account or information your concern relates to, without sending passwords or unnecessary sensitive information. We will investigate and respond within the period required by applicable law. Where available, you may also complain to your local privacy regulator.
+For privacy questions, requests or complaints, contact **support@leadthewaywithai.com**. Tell us which account or information your concern relates to, without sending passwords or unnecessary sensitive information. We will investigate and respond within the period required by applicable law. Where available, you may also complain to your local privacy regulator.

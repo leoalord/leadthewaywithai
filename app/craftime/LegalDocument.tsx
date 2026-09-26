@@ -7,31 +7,21 @@ import styles from "./legal.module.css";
 // docs/privacy/privacy-notice.md in leoalord/crafti-me-ai at these commits.
 // Publish a new version by replacing the file and updating its commit.
 export const SOURCE_COMMITS = {
-  "terms-of-use.md": "1cefa4d75fb575111e51bcd8b274b4438c4dbb99",
-  "privacy-notice.md": "2df2136a83e924762a4d1865eab8fe8214cc5a9d",
+  "terms-of-use.md": "5333380f48b17cc890e2f3c1573913edf1dd0c35",
+  "privacy-notice.md": "5333380f48b17cc890e2f3c1573913edf1dd0c35",
 } as const;
 
 type LegalFile = keyof typeof SOURCE_COMMITS;
-
-// Fills the placeholder in sources that predate the effective date being
-// written into the Markdown itself.
-export const PUBLICATION_DATE = "September 25, 2026";
-
-const PLACEHOLDER = "[PUBLICATION DATE]";
 
 function renderLegalMarkdown(file: LegalFile): string {
   const source = fs.readFileSync(
     path.join(process.cwd(), "content", "craftime", file),
     "utf8",
   );
-  const count = source.split(PLACEHOLDER).length - 1;
-  if (count > 1) {
-    throw new Error(`${file}: expected at most one ${PLACEHOLDER}, found ${count}`);
+  if (source.includes("[PUBLICATION DATE]")) {
+    throw new Error(`${file}: the effective date placeholder is not filled in`);
   }
-  return marked.parse(source.replace(PLACEHOLDER, PUBLICATION_DATE), {
-    async: false,
-    gfm: true,
-  });
+  return marked.parse(source, { async: false, gfm: true });
 }
 
 export default function LegalDocument({ file }: { file: LegalFile }) {
