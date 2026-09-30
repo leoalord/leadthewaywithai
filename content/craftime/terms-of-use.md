@@ -1,26 +1,26 @@
 # CraftiMe Beta Terms of Use
 
-**Version:** 1
+**Version:** 2
 
-**Effective date:** September 25, 2026
+**Effective date:** September 30, 2026
 
 **Operator:** Lead The Way With AI LLC
 
 **Terms and account contact:** support@leadthewaywithai.com
 
-CraftiMe helps adults turn craft ideas from supported public sources into drafts they can review, edit and save. “We” and “us” mean Lead The Way With AI LLC. These Terms describe the free beta service offered in the United States to adults aged 18 or over. You must be at least 18 to create or use an account. An adult should supervise any craft activity involving a child.
+CraftiMe helps adults turn craft ideas from supported public sources into crafts they can check, edit and keep. “We” and “us” mean Lead The Way With AI LLC. These Terms describe the free beta service offered in the United States to adults aged 18 or over. You must be at least 18 to create or use an account. An adult should supervise any craft activity involving a child.
 
 ## Your account and imports
 
-Use your own account and keep access to it secure. CraftiMe can process supported public links that you choose to import when that source is enabled. To prepare a craft, CraftiMe sends what you import (a link, or photos you choose) to CraftiMe's servers on Google Cloud, and Google's Gemini on Vertex AI drafts the craft for you to review. By agreeing to these Terms and the Privacy Notice, you agree to that processing; CraftiMe does not ask separately before each import. A link queued on your device is processed after you open CraftiMe with the correct account while online. Source availability and supported formats can change, and an import may fail if its source is unavailable or unsuitable.
+Use your own account and keep access to it secure. CraftiMe can process supported public links that you choose to import when that source is enabled. To prepare a craft, CraftiMe sends what you import (a link, or photos you choose) to CraftiMe's servers on Google Cloud, and Google's Gemini on Vertex AI prepares the craft instructions. When an import finds one usable craft, CraftiMe tries to save it to your crafts automatically; imports it does not save wait in Recent Imports for you to review. By agreeing to these Terms and the Privacy Notice, you agree to that processing; CraftiMe does not ask separately before each import. A link queued on your device is processed after you open CraftiMe with the correct account while online. Source availability and supported formats can change, and an import may fail if its source is unavailable or unsuitable.
 
 For link imports, submit only public content that you are entitled to access and use for this purpose. For in-app photo or screenshot imports, submit only material you are entitled to use for this purpose. Do not use CraftiMe to bypass a source's sign-in, payment, privacy or other access restrictions, or submit private or sensitive material about other people. You are responsible for the links and other material you choose to submit and for respecting the source's applicable rules and the rights of its creator or other rights holders.
 
-## Craft drafts and original sources
+## AI-prepared crafts and original sources
 
-CraftiMe uses AI to prepare craft instructions from the material you submit. A draft may be incomplete or inaccurate. Review and edit it before saving or following it, check materials and steps for your circumstances, and supervise any activity involving children. CraftiMe does not verify that an original idea, image, video or instruction is safe, accurate or free to reuse.
+CraftiMe uses AI to prepare craft instructions from the material you submit. A prepared craft, including one CraftiMe saves automatically, may be incomplete or inaccurate. Before following it, check its materials and steps for your circumstances, review any section CraftiMe marks as needing checking and correct it if needed, and supervise any activity involving children. CraftiMe does not verify that an original idea, image, video or instruction is safe, accurate or free to reuse.
 
-Original creators and rights holders keep their rights in source content. Importing or saving a draft does not transfer ownership of that content to you or to CraftiMe. Where a source reference is available, CraftiMe lets you open the original source; consult it for context and attribution. Your use of the original source remains subject to that source's terms.
+Original creators and rights holders keep their rights in source content. Importing or saving a craft does not transfer ownership of that content to you or to CraftiMe. Where a source reference is available, CraftiMe lets you open the original source; consult it for context and attribution. Your use of the original source remains subject to that source's terms.
 
 ## Your content
 

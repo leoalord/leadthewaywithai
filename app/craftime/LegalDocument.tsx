@@ -7,8 +7,8 @@ import styles from "./legal.module.css";
 // docs/privacy/privacy-notice.md in leoalord/crafti-me-ai at these commits.
 // Publish a new version by replacing the file and updating its commit.
 export const SOURCE_COMMITS = {
-  "terms-of-use.md": "5333380f48b17cc890e2f3c1573913edf1dd0c35",
-  "privacy-notice.md": "87b5b4cc6d26bd476cd41d92e3d266b3d6456bfe",
+  "terms-of-use.md": "2f261f1e7c86bc1f5d88e6b1b320e8da9dd569eb",
+  "privacy-notice.md": "2f261f1e7c86bc1f5d88e6b1b320e8da9dd569eb",
 } as const;
 
 type LegalFile = keyof typeof SOURCE_COMMITS;

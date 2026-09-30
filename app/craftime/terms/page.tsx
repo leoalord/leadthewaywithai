@@ -3,7 +3,7 @@ import LegalDocument from "../LegalDocument";
 
 // The CraftiMe iOS app links to this exact path; do not move or rename it.
 export const metadata: Metadata = {
-  title: { absolute: "CraftiMe Beta Terms of Use" },
+  title: { absolute: "CraftiMe Terms of Use" },
 };
 
 export default function CraftiMeTerms() {
