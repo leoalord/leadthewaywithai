@@ -1,8 +1,8 @@
 # CraftiMe Privacy Notice
 
-**Notice version:** 3
+**Notice version:** 4
 
-**Effective date:** September 30, 2026
+**Effective date:** October 8, 2026
 
 **Operator:** Lead The Way With AI LLC
 
@@ -18,7 +18,7 @@ CraftiMe is offered in the United States to adults aged 18 and over. Our [Terms 
 
 **Your agreement.** We record which versions of the Terms of Use and this notice you agreed to, and when. This record is kept with your account.
 
-**Craft ideas and saved content.** We process the links you submit, content retrieved from those links, photos you choose to import, generated craft instructions, your edits, titles, materials, tags, source references and retained craft images from link imports. Depending on the source, retrieval and extraction can involve text, images, video, audio and linked instructions. We store import status and information needed to retry or complete an import or save. When eligible, CraftiMe tries to save an import to your crafts automatically. We keep an unsaved draft after processing only if the import could not be saved. Your saved content also includes whether you marked a craft tried or a favorite, your optional private rating and note, and which craft sections you confirmed (materials, steps or both). In a saved craft, you confirm a section that needs checking by tapping “This list looks right” and saving, or by saving an edit to that section; an automatic save never confirms a section.
+**Craft ideas and saved content.** We process the links you submit, content retrieved from those links, photos you choose to import, generated craft instructions, your edits, titles, materials, tags, source references and retained craft images: a cover image from a link import, or a resized copy of the first photo from a photo import. Depending on the source, retrieval and extraction can involve text, images, video, audio and linked instructions. We store import status and information needed to retry or complete an import or save. When eligible, CraftiMe tries to save an import to your crafts automatically. We keep an unsaved draft after processing only if the import could not be saved. Your saved content also includes whether you marked a craft tried or a favorite, your optional private rating and note, and which craft sections you confirmed (materials, steps or both). In a saved craft, you confirm a section that needs checking by tapping “This list looks right” and saving, or by saving an edit to that section; an automatic save never confirms a section.
 
 **Plans and materials.** We store crafts you add to your plan and the days you plan them for, materials you mark as needed, items you type into your materials list and their checked status. These records are associated with your account.
 
@@ -28,7 +28,7 @@ CraftiMe is offered in the United States to adults aged 18 and over. Our [Terms 
 
 **Technical and support information.** Our hosting and authentication providers process technical information such as IP addresses, request timestamps and error information to deliver and protect the service. Our application and request logs also contain identifiers linked to your account: your account identifier, craft and import-job identifiers, and storage locations that include your account identifier. Error records can include the host name of a source image that could not be copied, and an unexpected service error can record fragments of the affected record, which can include a submitted link or craft text. If you contact us, we receive your message, contact details and any information you choose to include.
 
-Please avoid including children’s names, faces, health information or other private family details in submitted links, photos or free-text fields. Source content can contain information about its creators or other people.
+Please avoid including children’s names, faces, health information or other private family details in submitted links, photos or free-text fields. Because the first photo you import is kept as the craft’s cover, choose one without children’s faces. Source content can contain information about its creators or other people.
 
 ## How we use information
 
@@ -72,11 +72,11 @@ We retain account information and saved crafts while needed to provide your acco
 
 You can delete individual drafts and saved crafts using the app’s controls. Deleting a saved craft removes it from the library, plan and any Craft Cubbies, deletes its tried/favorite status, rating, note and section confirmations, and starts cleanup of its retained cover. Deleting a draft removes its draft text. Materials-list items added from a deleted craft are removed on a best-effort basis, and some can remain stored. Related source links, job records and limited deletion records can remain to prevent retries from restoring deleted content and to manage cleanup.
 
-If copying a saved craft’s cover image fails, CraftiMe keeps a private retry record and tries again a few times within about 15 minutes. If you delete the craft or your account in the meantime, the copy is abandoned and never saved. A small empty placeholder file, which contains no image, can remain in our storage until automatic cleanup removes it.
+If copying a link import’s cover image fails, CraftiMe keeps a private retry record and tries again a few times within about 15 minutes. If you delete the craft or your account in the meantime, the copy is abandoned and never saved. A small empty placeholder file, which contains no image, can remain in our storage until automatic cleanup removes it.
 
 **Link imports.** Temporary source media downloaded by our import service is removed when the import job ends. The generated result is kept for 30 days after the import finishes; the job record and its source link remain until you delete your account. Printable PDFs are linked, not copied. Images retained with saved crafts and information held by service providers follow their own lifecycle.
 
-**Photo imports.** Uploaded photos are deleted when the import finishes, fails or is discarded. Photos from an upload that is never completed are deleted about 15 minutes after the upload window closes. A safety rule deletes any submitted photo left in storage after one day.
+**Photo imports.** When a photo import finishes, we keep one resized copy of the first photo (first in the order you arranged before tapping Import, at most 1,600 pixels on its longest side) as the craft’s cover image. The uploaded photos themselves, including the full-size first photo, are deleted when the import finishes, fails or is discarded. Discarding the import also deletes its cover copy; once the craft is saved, the cover is deleted when you delete the craft or your account. Photos from an upload that is never completed are deleted about 15 minutes after the upload window closes. A safety rule deletes any submitted photo, and any cover copy not attached to a saved craft, left in storage after one day.
 
 **Storage and backups.** Files we delete remain in our storage provider’s 7-day recovery period before they are permanently removed. Our database keeps a 7-day recovery window, so deleted records and earlier versions of changed records can remain recoverable for up to 7 days before they are permanently removed.
 
