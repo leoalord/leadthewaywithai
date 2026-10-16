@@ -1,4 +1,4 @@
-/* Typography for the CraftiMe legal documents, which are rendered from Markdown. */
+/* Typography for the MakeMories legal documents, which are rendered from Markdown. */
 .doc {
   @apply font-sans text-base leading-relaxed text-fg sm:text-lg;
 }
