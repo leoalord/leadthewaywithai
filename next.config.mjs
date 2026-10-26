@@ -8,6 +8,12 @@ const nextConfig = {
       { source: "/craftime/privacy", destination: "/makemories/privacy", statusCode: 301 },
     ];
   },
+  async rewrites() {
+    // Standalone research pages live in public/ as self-contained HTML; serve them at their folder path.
+    return [
+      { source: "/research/numpy-to-rust-eval", destination: "/research/numpy-to-rust-eval/index.html" },
+    ];
+  },
 };
 
 export default nextConfig;

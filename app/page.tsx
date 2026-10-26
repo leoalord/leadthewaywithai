@@ -396,6 +396,29 @@ export default function Home() {
               </p>
               
               <div className="mt-6 space-y-6">
+                <div className="border-l-2 border-line/40 pl-4 py-1 hover:border-terracotta-500/60 transition-colors">
+                  <div className="flex items-center gap-2">
+                    <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-terracotta-500 bg-terracotta-500/10 px-2 py-0.5 rounded">Published</span>
+                    <span className="font-mono text-xs text-muted">12 min read</span>
+                  </div>
+                  <h4 className="mt-2 font-display text-base font-semibold text-fg">
+                    <a href="/research/numpy-to-rust-eval" className="hover:text-terracotta-500 transition-colors">
+                      First Try Is the Differentiator: How LLMs Translate Python into Rust
+                    </a>
+                  </h4>
+                  <p className="mt-1 text-sm text-fg/70">
+                    Seventeen language models translating 39 NumPy and radar workloads to Rust under one harness: first-try accuracy separates them, repair hides the gap.
+                  </p>
+                  <a
+                    href="https://github.com/leoalord/numpy-to-rust-eval"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 inline-block font-mono text-xs text-muted hover:text-fg transition-colors"
+                  >
+                    Code on GitHub →
+                  </a>
+                </div>
+
                 <div className="border-l-2 border-line/40 pl-4 py-1 hover:border-sage-500/60 transition-colors">
                   <div className="flex items-center gap-2">
                     <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-sage-500 bg-sage-500/10 px-2 py-0.5 rounded">Drafting</span>
