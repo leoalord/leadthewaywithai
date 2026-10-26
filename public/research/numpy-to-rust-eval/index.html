@@ -116,11 +116,13 @@
 .tb-fam-h h3 { font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); margin: 0; }
 .tb-ico { flex: none; width: 40px; height: 40px; border-radius: var(--cds-radius); display: grid; place-items: center; background: var(--color-bg); border: 1px solid var(--color-border-line); color: var(--color-fg); }
 .tb-fam-d { margin: 0; font-size: var(--cds-font-size-caption); line-height: 1.5; color: var(--color-fg-muted); }
-.tb-fam-stats { display: flex; flex-wrap: wrap; gap: var(--cds-gap-lg); align-items: baseline; }
-.tb-fam-stats div { display: flex; flex-direction: column; }
-.tb-fam-stats .v { font-family: var(--font-anthropic-serif); font-size: var(--cds-font-size-title); line-height: 1.1; font-variant-numeric: tabular-nums; }
-.tb-fam-stats .v.sm { font-size: var(--cds-font-size-heading); font-family: var(--font-anthropic-sans); }
-.tb-fam-stats .k { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+/* Four equal stat tiles: one row where the card is wide enough, two by two where it is not. */
+.tb-fam { container-type: inline-size; }
+.tb-fam-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--cds-gap-sm); }
+@container (min-width: 30rem) { .tb-fam-stats { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.tb-fam-stats div { display: flex; flex-direction: column; gap: 2px; padding: var(--cds-pad-sm) var(--cds-pad-md); background: var(--color-bg); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); }
+.tb-fam-stats .v { font-size: 1.25rem; font-weight: var(--cds-font-weight-medium); line-height: 1.2; white-space: nowrap; font-variant-numeric: lining-nums tabular-nums; }
+.tb-fam-stats .k { font-size: var(--cds-font-size-caption); line-height: 1.3; color: var(--color-fg-muted); }
 .tb-chips { display: flex; flex-wrap: wrap; gap: 4px; }
 .tb-chip { font-size: 11px; padding: 2px 7px; border-radius: 999px; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .tb-fam-x { margin: 0; font-size: var(--cds-font-size-caption); line-height: 1.5; border-top: 1px solid var(--color-border-line); padding-top: var(--cds-pad-sm); }
