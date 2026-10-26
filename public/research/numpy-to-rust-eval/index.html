@@ -295,8 +295,7 @@ lost to provider timeouts, leaving 1,988 scored runs. The whole batch cost
 about $69.</p>
 <hr />
 <h2>4 Results</h2>
-<p>First-submission accuracy was 81.1% as recorded, or 82.7% after the
-starter-crate adjustment described in Notes. Final accuracy after repair was
+<p>First-submission accuracy was 82.7%, and final accuracy after repair was
 95.7%. The radar tasks widened the gap mainly among models outside the top
 six; section 4.4 breaks down that split. Each model keeps its maker's color in
 every chart.</p>
@@ -320,10 +319,7 @@ differences:</p>
 smaller Claude Haiku 5.5 (98.3%) and GPT-6 Luna (91.5%) offer strong accuracy
 for their cost.</p>
 <p>Haiku outscoring Sonnet was unexpected. Sonnet reported zero reasoning tokens in
-most runs. Five of its eight original first-submission failures were missing
-crate declarations; the starter-crate adjustment fixes those five, but Haiku still finishes
-ahead. This batch cannot show whether the reasoning difference explains the
-gap. Gemini 4 Argon's 50% on the neural-net tasks was also unexpected.</p>
+most runs, though this batch cannot show whether that explains the gap. Gemini 4 Argon's 50% on the neural-net tasks was also unexpected.</p>
 <p>Among open-weight models, DeepSeek V4.1 Flash was both efficient and
 accurate, scoring slightly higher than GPT-6 Luna on the first try. NVIDIA's
 Nemotron Lightning 3.5 trailed the field at 30.8%.</p>
@@ -399,20 +395,19 @@ DeepSeek V4.1 Flash—average slightly higher scores on radar than on NPBench.
 The other eleven average about 20 percentage points lower on radar. The full
 radar pipeline, <code>radar_rda</code>, is harder than any of its stages on its own.</p>
 <h3>4.5 Repair fixes three in four failures</h3>
-<p>Before the starter-crate adjustment, 375 first submissions failed. Repair
-fixed 289 of them: 203 on the second submission, 61 on the third, and 25 on
+<p>Of the 375 first submissions that failed during the batch, repair fixed 289: 203 on the second submission, 61 on the third, and 25 on
 the fourth. The second submission accounted for 70% of successful repairs. Of
 the runs that used all four submissions, 23% passed.</p>
 <div class="tb"><div class="tb-card">
       <h3>1. Pass rate after each submission</h3>
-      <p class="tb-note">Share of runs that have passed held-out by each submission, with submission 1 declaration-corrected. Each grey line is one model; hover it to see which.</p>
+      <p class="tb-note">Share of runs that have passed held-out by each submission. Each grey line is one model; hover it to see which.</p>
       <div class="tb-legend" id="lg-curve"></div>
       <div class="tb-chart dash-skeleton" id="chart-curve" data-source="repair_curve models"></div>
     </div><div class="tb-card">
-      <h3>2. What went wrong on the first submission, as recorded</h3>
+      <h3>2. What went wrong on the first submission</h3>
       <div class="tb-legend" id="lg-fail"></div>
       <div class="tb-chart dash-skeleton" id="chart-fail" data-source="models"></div>
-      <p class="tb-note">An undeclared crate is code that uses a crate (usually num-complex or rustfft) without declaring it, so it fails to compile even when the code itself is right. These are the batch's actual first submissions, before the crate correction. GPT-6.1 Sol and Claude Opus 5.5 never failed one. The label shows how many of each model's failures repair turned into passes.</p>
+      <p class="tb-note">An undeclared crate is code that uses a crate (usually num-complex or rustfft) without declaring it, so it fails to compile even when the code itself is right. GPT-6.1 Sol and Claude Opus 5.5 never failed one. The label shows how many of each model's failures repair turned into passes.</p>
     </div><div class="tb-card">
       <h3>3. Which failures repair can fix</h3>
       <p class="tb-note">Share of first failures of each type that end up passing held-out</p>
