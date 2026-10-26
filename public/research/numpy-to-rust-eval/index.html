@@ -92,6 +92,10 @@
 .tb-legend i.ring { border-radius: 50%; background: transparent; border: 2px solid var(--color-fg-muted); }
 .tb-legend i.dash { height: 0; border-radius: 0; border-top: 2px dashed var(--cds-chart-reference); width: 18px; }
 .tb-legend i.mark { width: 6px; height: 6px; border-radius: 50%; background: var(--color-fg); }
+.tb-toggle { display: inline-flex; align-self: flex-start; gap: 2px; padding: 2px; border: 1px solid var(--color-border-line); border-radius: 999px; }
+.tb-toggle button { font: inherit; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); background: transparent; border: 0; border-radius: 999px; padding: 4px 12px; cursor: pointer; }
+.tb-toggle button[aria-pressed="true"] { background: var(--color-fg); color: var(--color-panel); }
+.tb-toggle button:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 2px; }
 .tb-scroll { overflow-x: auto; }
 .tb-chart { width: 100%; min-width: 0; }
 .tb-chart text { font-family: var(--font-anthropic-sans); }
@@ -142,10 +146,9 @@
 <h1>First Try Is the Differentiator: How LLMs Translate Python into Rust</h1>
 <p class="caption">Leo Walker · October 2026</p>
 <h2>TL;DR</h2>
-<p>Frontier labs are now using their own models to move whole codebases over to
-Rust. My background is mostly in data science, so I wanted to know how well
-these models move numerical Python, the NumPy code I write every day, into
-Rust.</p>
+<p>Frontier labs now use their own models to port entire codebases to Rust.
+Coming from data science, I wanted to measure how well these models translate
+numerical Python, the NumPy-based code common in scientific work, into Rust.</p>
 <p>I gave 17 models 39 numerical Python tasks to translate: 32 from NPBench, a
 NumPy benchmark, and 7 from Code Metal's radarlib. Every model got the same
 tools, reasoning effort set to <code>medium</code>, and up to four submissions per run. I
@@ -155,7 +158,7 @@ never saw.</p>
 <ul>
 <li><strong>Seven models reached 100% after repair.</strong> First-submission accuracy
   showed larger differences between models.</li>
-<li><strong>Cheaper per token isn't cheaper per task.</strong> The open-weight models wrote
+<li><strong>Cheaper per token is not cheaper per task.</strong> The open-weight models wrote
   about 2.3 times as many tokens and needed more repairs, so on average they
   cost more per task than the frontier models.</li>
 <li><strong>Best value:</strong> GPT-6 Luna and Claude Haiku 5.5, with GPT-6.1 Sol the most
@@ -166,18 +169,18 @@ never saw.</p>
 <a href="https://github.com/leoalord/numpy-to-rust-eval">github.com/leoalord/numpy-to-rust-eval</a>.</p>
 <hr />
 <h2>1 Introduction</h2>
-<p>The question I care about is simple: <strong>does the translated code do what the
-original did?</strong></p>
-<p>With numerical code, the kind full of matrices and arrays, compiling
-successfully is only part of the job. Some failures are quiet: the program
-runs and gives you the wrong numbers. A scaling term gets dropped, two indexes
-get swapped, or a calculation runs at lower floating-point precision than the
-original. Nothing crashes, so nothing tells you it's wrong.</p>
-<p>New models come out every few weeks, each with benchmarks from some other
-area. I wanted one that matches my own background. I picked NPBench because it
-covers a wide variety of problems, from linear algebra to physics simulations.
-Code Metal's work on verified code translation also interested me, and I
-wanted to include radar-processing tasks from their radarlib.</p>
+<p>The central question is <strong>whether the translated code does what the original
+did.</strong></p>
+<p>In numerical code built on matrices and arrays, compiling is only part of the
+job. The harder failures are silent: the program runs and returns the wrong
+numbers. A scaling term is dropped, two indexes are swapped, or a calculation
+runs at lower floating-point precision than the original. Nothing crashes, so
+nothing signals the error.</p>
+<p>New models arrive every few weeks, usually with benchmarks from other
+domains, so I built an evaluation closer to my own background. I chose NPBench
+for its breadth, from linear algebra to physics simulations. Code Metal's work
+on verified code translation led me to add radar-processing tasks from their
+radarlib.</p>
 <p>I compared models using the same tools and submission budget, measuring both
 accuracy and cost. Passing tests is evidence, not proof, so "correct" here
 means the Rust matches the Python outputs within the grading tolerances on
@@ -185,19 +188,18 @@ inputs the model never saw.</p>
 <hr />
 <h2>2 Related work</h2>
 <p><a href="https://arxiv.org/abs/2006.03511">TransCoder</a> judged a translation by whether
-it passes tests, not by how the code looks, and that idea is the basis for
-building evals like this one.</p>
+it passes tests, not by how the code looks, an idea that underpins
+evaluations like this one.</p>
 <p>Recent projects apply similar checks to whole codebases. The Bun team ported <a href="https://bun.com/blog/bun-in-rust">Bun</a>, about 535,000 lines of
 Zig, to Rust in 11 days with Claude Code. It passed Bun's test suite and still
 introduced 19 regressions, since fixed. Google
 <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/">reports Gemini 4 Argon agents</a>
-porting libraries like re2 and libgav1, and even the Fuchsia Zircon kernel,
-over to Rust. Both rely on the same two signals I use: compiler errors to drive
+porting libraries such as re2 and libgav1, and the Fuchsia Zircon kernel, to
+Rust. Both rely on the same two signals I use: compiler errors to drive
 repair, and outputs compared against the original.</p>
 <p><a href="https://www.codemetal.ai/research/ai-generated-code-that-works-and-proves-it">Code Metal</a>
-frames the goal as <em>behavioral equivalence</em>: the new code has to behave like
-the old code. They check it on a spectrum that runs from testing the two
-versions side by side all the way to
+frames the goal as <em>behavioral equivalence</em>: the new code must behave like
+the old, checked on a spectrum from side-by-side testing to
 <a href="https://www.codemetal.ai/research/verified-code-transpilation-with-llms">formal proof</a>.
 This study sits at the testing end of that spectrum.</p>
 <p>Their
@@ -205,16 +207,15 @@ This study sits at the testing end of that spectrum.</p>
 argues that the types at a function's boundary should come from a fixed schema
 rather than from the model. My task contracts fix the Rust function signatures
 in advance. Their
-<a href="https://arxiv.org/abs/2512.14762">workflows-versus-agents paper</a> was one of
-the main motivations for this project and shaped how I designed the harness.</p>
+<a href="https://arxiv.org/abs/2512.14762">workflows-versus-agents paper</a> motivated
+this project and shaped the design of my harness.</p>
 <hr />
 <h2>3 Setup</h2>
 <h3>3.1 The workflow</h3>
 <p>Each run is a single model working on a single task, driven by a four-node
 <a href="https://docs.langchain.com/oss/python/langgraph/overview">LangGraph</a> graph.</p>
-<figure><svg class="wf" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" width="100%" role="img" aria-label="The translation workflow: transpile, compile, test, repair, then grade">
+<figure><svg xmlns="http://www.w3.org/2000/svg" class="wf" viewBox="0 0 720 280" width="100%" role="img" aria-label="The translation workflow: transpile, compile, test, repair, then grade">
 <style>
-  /* Site patch (leadthewaywithai.com, not in numpy-to-rust-eval): scope to this diagram and honor data-theme. */
   svg.wf { --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --muted:#898781; --axis:#c3c2b7; --s1:#2a78d6;
         font-family:system-ui,-apple-system,"Segoe UI",sans-serif; }
   @media (prefers-color-scheme: dark) {
@@ -228,13 +229,12 @@ the main motivations for this project and shaped how I designed the harness.</p>
 </figure>
 <p class="caption">Solid edges are the repair loop; dashed edges end a run early. Held-out
 results come only from the last node, so they never reach the model.</p>
-<p>The model writes or edits a Rust file, and that file moves straight on to be
-compiled and tested. Each submitted version is one submission, and each run
+<p>The model writes or edits a Rust file, which is then compiled and tested. Each submitted version is one submission, and each run
 allows up to four submissions. After a failure, the model sees the compiler
 errors or <em>where</em> its values were wrong, but never the values it should have
 produced. The run stops when every development test passes or after the fourth
-submission, and that last submission is graded on the held-out cases. Just
-like the expected values, the held-out results are never shown to the model.</p>
+submission, and that last submission is graded on the held-out cases. Like
+the expected values, held-out results are never shown to the model.</p>
 <h3>3.2 Preparing a submission</h3>
 <p>A model call is one request to the LLM. A submission can involve several model
 calls, but its first successful code edit sends the file straight to compile
@@ -255,7 +255,7 @@ and test. The model has three tools:</p>
 </tr>
 <tr>
 <td><code>replace_code</code></td>
-<td>Swaps out one block of the file</td>
+<td>Replaces one block of the file</td>
 <td>Yes, if it succeeds</td>
 </tr>
 <tr>
@@ -265,14 +265,14 @@ and test. The model has three tools:</p>
 </tr>
 </tbody>
 </table></div>
-<p>A model needs to declare any dependencies before submitting code so the
-environment is set up before its code gets compiled. The prompt tells the
+<p>A model must declare any dependencies before submitting, so they are
+installed when the code compiles. The prompt tells the
 models to answer with tools, and a reply without a tool call submits the file
 as it stands. If an edit fails, the model gets the error and can try again, up
 to ten model calls per submission. That cap rarely mattered: only 34 of the
 2,640 submissions went forward without a successful edit. Preparing a
 submission took 1.16 model calls on average.</p>
-<p>For this round I didn't give the models a search tool. They see the Python
+<p>Models had no search tool in this round. They see the Python
 source, the Rust function signature, the starter crates, and their latest
 feedback, and never the grading code, a reference solution, or the expected
 values.</p>
@@ -296,7 +296,7 @@ about $69.</p>
 <hr />
 <h2>4 Results</h2>
 <p>First-submission accuracy was 81.1% as recorded, or 82.7% after the
-starter-crate adjustment explained below. Final accuracy after repair was
+starter-crate adjustment described in Notes. Final accuracy after repair was
 95.7%. The radar tasks widened the gap mainly among models outside the top
 six; section 4.4 breaks down that split. Each model keeps its maker's color in
 every chart.</p>
@@ -316,23 +316,17 @@ differences:</p>
     </div></div>
 
 <p class="caption">Each model had 117 scored runs (116 for Inkling).</p>
-<p>The first-try figures include a starter-crate adjustment. I replayed 49 first
-submissions that failed to compile because a starter crate was undeclared,
-adding only the missing declaration and leaving the Rust code unchanged. Of
-those, 31 passed and count as first-try successes here. This raises the
-overall rate from 81.1% to 82.7%; Notes gives the affected models.</p>
-<p>GPT-6.1 Sol and Claude Opus 5.5 got every task right on the first try. Just
-behind them, the smaller models, Claude Haiku 5.5 and GPT-6 Luna, are very
-accurate for what they cost.</p>
-<p>Haiku beating Sonnet surprised me. Sonnet reported zero reasoning tokens in
+<p>GPT-6.1 Sol and Claude Opus 5.5 got every task right on the first try. The
+smaller Claude Haiku 5.5 (98.3%) and GPT-6 Luna (91.5%) offer strong accuracy
+for their cost.</p>
+<p>Haiku outscoring Sonnet was unexpected. Sonnet reported zero reasoning tokens in
 most runs. Five of its eight original first-submission failures were missing
-crate declarations; the adjustment fixes those five, but Haiku still finishes
-ahead. I can't tell from this batch whether the reasoning difference explains
-the gap. Gemini 4 Argon struggling on the neural-net tasks (50%) was another
-surprise.</p>
-<p>It was nice to see open-weight models that are both efficient and accurate:
-DeepSeek V4.1 Flash scored slightly higher than GPT-6 Luna on the first try.
-NVIDIA's Nemotron Lightning 3.5 was underwhelming at 30.8%.</p>
+crate declarations; the starter-crate adjustment fixes those five, but Haiku still finishes
+ahead. This batch cannot show whether the reasoning difference explains the
+gap. Gemini 4 Argon's 50% on the neural-net tasks was also unexpected.</p>
+<p>Among open-weight models, DeepSeek V4.1 Flash was both efficient and
+accurate, scoring slightly higher than GPT-6 Luna on the first try. NVIDIA's
+Nemotron Lightning 3.5 trailed the field at 30.8%.</p>
 <h3>4.2 Higher spending did not consistently improve accuracy</h3>
 <p>Cost per run varies about 70-fold, from $0.0013 for GPT-6 Luna to $0.093 for
 Gemini 3.8 Flash, and it barely tracks accuracy.</p>
@@ -343,9 +337,9 @@ Gemini 3.8 Flash, and it barely tracks accuracy.</p>
       <p class="tb-note">Cost axis is logarithmic. Prices are the 2026-10-19 roster; a model is on the frontier when no cheaper model has a higher first-try rate.</p>
     </div></div>
 
-<p>Plenty of models used a lot of reasoning tokens, the "thinking" a model does
-before it answers, without getting more accurate for it, and all that thinking
-adds both time and cost. Open-weight models are often cheaper per token, but
+<p>Several models used many reasoning tokens (the "thinking" a model does before
+it answers) without a matching gain in accuracy, and that thinking adds both
+time and cost. Open-weight models are often cheaper per token, but
 they wrote about 2.3 times as many tokens and needed more submissions (1.51 on
 average against 1.06), so they cost more per run ($0.038 against $0.030). Kimi
 K3, Ember-1, and Inkling each cost more than Claude Opus 5.5 and scored 12 to
@@ -357,8 +351,8 @@ Gemini 3.8 Flash used so many tokens that it cost more than three times as
 much as Gemini 4 Argon, and it scored lower. DeepSeek V4.1 Flash nearly
 matches Argon (92.3% against 93.2%) at 40% of the cost.</p>
 <h3>4.3 "Medium" effort means different things</h3>
-<p>Every model was set to <code>medium</code> reasoning effort, but that means very
-different things from one provider to the next. GPT-6.1 Sol's median was 123
+<p>Every model was set to <code>medium</code> reasoning effort, but the setting translates
+very differently across providers. GPT-6.1 Sol's median was 123
 reasoning tokens per run. Claude Opus 5.5, GPT-6 Luna, and Gemini 4 Argon were
 also in the hundreds; Claude Haiku 5.5's median was 1,974. Gemini 3.8 Flash's
 median was 21,565. Median run times ranged from 13 to 159 seconds.</p>
@@ -367,8 +361,8 @@ more accurate in this batch. Across models, longer runs tended to score lower.
 Within repeated runs of the same model and task, first submissions that failed
 used fewer reasoning tokens up front on average than those that passed.
 Neither comparison establishes that changing the reasoning budget would change
-accuracy. I was pleasantly surprised by how quick GPT-6.1 Sol and Claude Opus
-5.5 were for how accurate they were.</p>
+accuracy. The two most accurate models were also reasonably fast, with median
+runs of 19 seconds for Claude Opus 5.5 and 26 seconds for GPT-6.1 Sol.</p>
 <div class="tb"><div class="tb-grid">
       <div class="tb-card">
         <h3>Median reported reasoning tokens per run</h3>
@@ -390,8 +384,9 @@ rate of at least 80%. The hardest are <code>resnet</code> (33.3%) and
 <code>scattering_self_energies</code> (46.0%); four of the next seven are radar tasks
 (62.7–72.5%).</p>
 <div class="tb"><div class="tb-card">
-      <h3>First-try passes out of three trials, every model and task</h3>
-      <div class="tb-legend" id="lg-heat"><span><i id="sw-0"></i>0 of 3</span><span><i id="sw-1"></i>1 of 3</span><span><i id="sw-2"></i>2 of 3</span><span><i id="sw-3"></i>3 of 3</span><span><i class="mark"></i>held-out failed in a trial</span><span><i class="dash" style="border-top-style:solid;border-top-width:3px"></i>radar task</span></div>
+      <h3 id="heat-title">First-try passes out of three trials, every model and task</h3>
+      <div class="tb-toggle" id="heat-view" role="group" aria-label="Heatmap view"><button type="button" data-view="first_try" aria-pressed="true">First try</button><button type="button" data-view="held_out" aria-pressed="false">Final held-out</button></div>
+      <div class="tb-legend" id="lg-heat"><span><i id="sw-0"></i>0 of 3</span><span><i id="sw-1"></i>1 of 3</span><span><i id="sw-2"></i>2 of 3</span><span><i id="sw-3"></i>3 of 3</span><span><i class="mark"></i><span id="heat-mark">held-out failed in a trial</span></span><span><i class="dash" style="border-top-style:solid;border-top-width:3px"></i>radar task</span></div>
       <div class="tb-scroll"><div class="tb-chart dash-skeleton" id="chart-heat" data-source="models tasks cells"></div></div>
       <p class="tb-note">Rows sorted by first-try rate, columns hardest on the left. Inkling's scattering_self_energies cell has two trials because one was lost to gateway timeouts.</p>
     </div></div>
@@ -424,22 +419,22 @@ the runs that used all four submissions, 23% passed.</p>
       <div class="tb-chart dash-skeleton" id="chart-kind" data-source="repair"></div>
     </div></div>
 
-<p>The weaker models mostly wrote code that didn't compile, and they recovered
-less often. The mid-tier models' code compiled but gave the wrong numbers. And
-no run that passed the tests it could see went on to fail the hidden ones.</p>
+<p>Weaker models mostly failed to compile and recovered less often; mid-tier
+models compiled but produced wrong values. No run that passed its visible tests
+went on to fail the held-out ones.</p>
 <hr />
 <h2>5 Discussion</h2>
 <p>First-submission accuracy was the more useful way to distinguish models in
 this task set, since final scores clustered near 100%. For an unattended
-translation tool, I'd want to consider that alongside repair success and cost.
+translation tool, I would weigh that alongside repair success and cost.
 The frontier models' lower average cost per run came with fewer tokens and
 fewer submissions.</p>
 <p>The numerical failures are worth a closer look. In 13 of <code>resnet</code>'s 15 final
 failures, the model stored a padded buffer at single precision (<code>f32</code>) where
 NumPy uses double (<code>f64</code>). The tests caught the resulting errors. Fixing the
-input and output types alone doesn't prevent that mistake: the signature stays
+input and output types alone does not prevent that mistake: the signature stays
 the same while the precision changes inside the function.</p>
-<p>I also need to improve the harness. The prompt described starter crates as
+<p>The harness itself needs improvement. The prompt described starter crates as
 "available" without making clear that they still had to be declared. Next time
 it should say "Starter crates are not included automatically; declare any you
 use." The one-edit-per-submission rule can also discard useful work: one GLM
@@ -450,7 +445,7 @@ next submission.</p>
 <li><strong>Tests are evidence, not proof.</strong> The held-out cases only check the values
   they reach; Bun's port passed its full test suite and still introduced 19
   regressions.</li>
-<li><strong>Correctness only.</strong> I don't measure how fast the translated Rust runs.</li>
+<li><strong>Correctness only.</strong> I do not measure how fast the translated Rust runs.</li>
 <li><strong>Three trials rank tiers, not neighbors.</strong> None of the top six differ from
   each other by a statistically significant margin.</li>
 <li><strong>One prompt, one effort setting, and no documentation search.</strong></li>
@@ -472,8 +467,8 @@ Claude Sonnet 5.5 (93.2%), and Inkling (57.8%).</p>
 is real: with adaptive thinking at <code>medium</code> it chose to think in only 38 of its
 117 runs (41 of 130 model calls), against 116 of 117 calls for Opus and all 120
 for Haiku. LangSmith's records for every Sonnet run agree. Inkling did reason,
-and Fireworks returns its count, but in a field LangChain doesn't map, so
-neither my harness nor LangSmith recorded it; it's left off the reasoning
+and Fireworks returns its count, but in a field LangChain does not map, so
+neither my harness nor LangSmith recorded it; it is left off the reasoning
 chart. Its raw responses put the median at about 5,200 reasoning tokens per
 run. Costs and pass rates are unaffected, and the other nine Fireworks models'
 counts were recorded correctly.</p>
@@ -484,7 +479,7 @@ shapes and types exactly, integers must be equal, and floats must agree within
 a relative tolerance of 1e-5 for single precision and 1e-9 for double. After a
 failure the model sees the error, or up to five mismatched positions, but never
 the expected values. A run that hits a provider error, $5 of spend, or repeated
-infrastructure failures ends early and isn't counted against the model.</p>
+infrastructure failures ends early and is not counted against the model.</p>
 <p><strong>Code.</strong> <a href="https://github.com/leoalord/numpy-to-rust-eval">github.com/leoalord/numpy-to-rust-eval</a>.
 The data behind every figure is in its <code>results/</code> folder.</p>
 <hr />
@@ -537,6 +532,8 @@ new ResizeObserver(([entry]) => {
 }).observe(document.getElementById("dash-root"));
 // Provider colors depend on the theme, so redraw when it changes.
 matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => listeners.forEach((fn) => fn()));
+new MutationObserver(() => listeners.forEach((fn) => fn()))
+  .observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
 </script>
 <script>
 (function () {
@@ -702,7 +699,22 @@ matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => list
     });
   }
 
-  function drawHeat(el, models, tasks, cells, pal) {
+  // The heatmap shows first-try or final held-out passes; columns keep the first-try order either way.
+  const HEAT_VIEWS = {
+    first_try: { title: 'First-try passes out of three trials, every model and task', mark: 'held-out failed in a trial' },
+    held_out: { title: 'Final held-out passes out of three trials, every model and task', mark: 'repaired in a trial' },
+  };
+  let heatView = 'first_try';
+  let redrawHeat = () => {};
+  document.querySelectorAll('#heat-view button').forEach((b) => b.addEventListener('click', () => {
+    heatView = b.dataset.view;
+    document.querySelectorAll('#heat-view button').forEach((o) => o.setAttribute('aria-pressed', String(o === b)));
+    document.getElementById('heat-title').textContent = HEAT_VIEWS[heatView].title;
+    document.getElementById('heat-mark').textContent = HEAT_VIEWS[heatView].mark;
+    redrawHeat();
+  }));
+
+  function drawHeat(el, models, tasks, cells, pal, view) {
     const tip = tooltip(el.closest('.tb-card'));
     const byKey = new Map(cells.map((c) => [`${c.model}|${c.task}`, c]));
     const avail = el.parentElement.clientWidth;
@@ -722,12 +734,13 @@ matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => list
     models.forEach((m, i) => tasks.forEach((t, j) => {
       const c = byKey.get(`${m.model}|${t.task}`);
       const ft = N(c.first_try), n = N(c.trials), ho = N(c.held_out);
-      const col = pal[Math.round((ft / n) * 3)];
+      const v = view === 'held_out' ? ho : ft;
+      const col = pal[Math.round((v / n) * 3)];
       const x0 = labW + j * cell, y0 = headH + i * cell;
       const g = svg.append('g');
       g.append('rect').attr('x', x0 + 1).attr('y', y0 + 1).attr('width', cell - 2).attr('height', cell - 2).attr('rx', 3).style('fill', col);
-      if (cell >= 18) g.append('text').attr('x', x0 + cell / 2).attr('y', y0 + cell / 2 + 3.5).attr('text-anchor', 'middle').attr('font-size', 10).style('fill', ink(col)).text(ft);
-      if (ho < n) g.append('circle').attr('cx', x0 + cell - 5).attr('cy', y0 + 5).attr('r', 2.2).style('fill', ink(col));
+      if (cell >= 18) g.append('text').attr('x', x0 + cell / 2).attr('y', y0 + cell / 2 + 3.5).attr('text-anchor', 'middle').attr('font-size', 10).style('fill', ink(col)).text(v);
+      if (view === 'held_out' ? ho > ft : ho < n) g.append('circle').attr('cx', x0 + cell - 5).attr('cy', y0 + 5).attr('r', 2.2).style('fill', ink(col));
       g.on('mousemove', (ev) => tip.show(ev, `${m.label} · ${t.task}`, [[col, `First try ${ft} of ${n}`], [null, `Held-out ${ho} of ${n}`]])).on('mouseleave', tip.hide);
     }));
   }
@@ -947,34 +960,30 @@ matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => list
     const W = el.clientWidth, top = 22;
     const labW = labelWidth(models);
     const ftW = textW('First try') + 14;
-    // Site patch (leadthewaywithai.com, not in numpy-to-rust-eval): when the name column leaves too little room
-    // for bars (phones), put each name on its own line above its bar instead of beside it.
     const compact = W - ftW - 56 - (labW + 4) < 120;
     const rowH = compact ? 42 : 26, H = top + models.length * rowH + 28;
+    const by = compact ? 9 : 0, bh = compact ? 12 : 16;
     const x = d3.scaleLog([10, 50000], [compact ? 4 : labW + 4, W - ftW - 56]);
     const y = (i) => top + i * rowH + rowH / 2;
-    const by = (i) => (compact ? y(i) + 9 : y(i));
     const svg = svgIn(el, W, H);
     xGrid(svg, x, W < 520 ? [10, 1000, 50000] : [10, 100, 1000, 10000, 50000], top - 4, H - 26, d3.format(','));
     muted(svg.append('text').attr('x', W - 4).attr('y', 12).attr('text-anchor', 'end')).text('First try');
-    if (compact) {
-      models.forEach((m, i) => {
-        const ly = y(i) - 10;
-        svg.append('rect').attr('x', 4).attr('y', ly - 4.5).attr('width', 9).attr('height', 9).attr('rx', 2).style('fill', provColor(m.provider));
-        logoBadge(svg, m.maker, 26, ly, 12);
-        const t = svg.append('text').attr('x', 40).attr('y', ly + 4).attr('font-size', 12).style('fill', 'var(--color-fg)');
-        t.append('tspan').text(m.label);
-        if (suffix(m)) t.append('tspan').attr('font-size', 11).style('fill', 'var(--color-fg-muted)').text(suffix(m));
-      });
-    } else rowLabels(svg, models, labW, y);
+    if (!compact) rowLabels(svg, models, labW, y);
+    else models.forEach((m, i) => {
+      svg.append('rect').attr('x', 4).attr('y', y(i) - 14.5).attr('width', 9).attr('height', 9).attr('rx', 2).style('fill', provColor(m.provider));
+      logoBadge(svg, m.maker, 26, y(i) - 10, 12);
+      const t = svg.append('text').attr('x', 40).attr('y', y(i) - 6).attr('font-size', 12).style('fill', 'var(--color-fg)');
+      t.append('tspan').text(m.label);
+      if (suffix(m)) t.append('tspan').attr('font-size', 11).style('fill', 'var(--color-fg-muted)').text(suffix(m));
+    });
     models.forEach((m, i) => {
       const v = N(m.median_reasoning_tokens);
       const g = svg.append('g');
       if (v > 0) {
-        g.append('rect').attr('x', x(10)).attr('y', by(i) - (compact ? 6 : 8)).attr('width', x(v) - x(10)).attr('height', compact ? 12 : 16).attr('rx', 3).style('fill', provColor(m.provider));
-        g.append('text').attr('x', x(v) + 6).attr('y', by(i) + 4).attr('font-size', 12).style('fill', 'var(--color-fg)').text(FMT.int(v));
-      } else muted(g.append('text').attr('x', x(10) + 4).attr('y', by(i) + 4)).text('0');
-      g.append('text').attr('x', W - 4).attr('y', by(i) + 4).attr('text-anchor', 'end').attr('font-size', 12).style('fill', 'var(--color-fg-muted)').text(FMT.pct(m.first_try_pct));
+        g.append('rect').attr('x', x(10)).attr('y', y(i) + by - bh / 2).attr('width', x(v) - x(10)).attr('height', bh).attr('rx', 3).style('fill', provColor(m.provider));
+        g.append('text').attr('x', x(v) + 6).attr('y', y(i) + by + 4).attr('font-size', 12).style('fill', 'var(--color-fg)').text(FMT.int(v));
+      } else muted(g.append('text').attr('x', x(10) + 4).attr('y', y(i) + by + 4)).text('0');
+      g.append('text').attr('x', W - 4).attr('y', y(i) + by + 4).attr('text-anchor', 'end').attr('font-size', 12).style('fill', 'var(--color-fg-muted)').text(FMT.pct(m.first_try_pct));
       g.append('rect').attr('x', 0).attr('y', y(i) - rowH / 2).attr('width', W).attr('height', rowH).style('fill', 'transparent')
         .on('mousemove', (ev) => tip.show(ev, `${m.label} · ${who(m)}`, [[provColor(m.provider), v ? `${FMT.int(v)} median reasoning tokens` : '0 median reasoning tokens'], [null, `First try ${FMT.pct(m.first_try_pct)}`]]))
         .on('mouseleave', tip.hide);
@@ -1029,7 +1038,8 @@ matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => list
 
     const byRank = () => [...D('models')].sort((a, b) => N(a.rank) - N(b.rank));
     slot(document.getElementById('chart-leader'), ['models'], (el) => drawLeader(el, byRank()));
-    slot(document.getElementById('chart-heat'), ['models', 'tasks', 'cells'], (el) => drawHeat(el, byRank(), [...D('tasks')].sort((a, b) => N(a.rank) - N(b.rank)), D('cells'), pal));
+    redrawHeat = () => slot(document.getElementById('chart-heat'), ['models', 'tasks', 'cells'], (el) => drawHeat(el, byRank(), [...D('tasks')].sort((a, b) => N(a.rank) - N(b.rank)), D('cells'), pal, heatView));
+    redrawHeat();
     slot(document.getElementById('fam-grid'), ['families', 'models', 'tasks', 'totals'], (el) => drawFamilies(el, D('families'), byRank(), D('tasks'), D('totals'), pal));
     slot(document.getElementById('chart-curve'), ['repair_curve', 'models'], (el) => drawCurve(el, D('repair_curve'), D('models')));
     slot(document.getElementById('chart-fail'), ['models'], (el) => drawFail(el, byRank()));
