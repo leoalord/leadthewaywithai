@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import LegalDocument from "../LegalDocument";
 
 const PAGE_URL = "https://www.leadthewaywithai.com/makemories/privacy";
-const TITLE = "MakeMories Privacy Notice";
+const TITLE = "Makemories Privacy Notice";
 const DESCRIPTION =
-  "How Lead The Way With AI LLC handles information when you use the MakeMories iOS app.";
+  "How Lead The Way With AI LLC handles information when you use the Makemories iOS app.";
 
-// The MakeMories iOS app links to this exact path; do not move or rename it.
+// The Makemories iOS app links to this exact path; do not move or rename it.
 export const metadata: Metadata = {
   title: { absolute: TITLE },
   description: DESCRIPTION,
@@ -15,6 +15,6 @@ export const metadata: Metadata = {
   twitter: { title: TITLE, description: DESCRIPTION },
 };
 
-export default function MakeMoriesPrivacy() {
+export default function MakemoriesPrivacy() {
   return <LegalDocument file="privacy-notice.md" />;
 }
