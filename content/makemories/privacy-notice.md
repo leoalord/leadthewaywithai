@@ -1,8 +1,8 @@
 # Makemories Privacy Notice
 
-**Notice version:** 7
+**Notice version:** 8
 
-**Effective date:** October 27, 2026
+**Effective date:** November 2, 2026
 
 **Operator:** Lead The Way With AI LLC
 
@@ -74,7 +74,7 @@ A public post can include its creator’s name, handle, image or voice; we use i
 
 We share information only with the service providers named in this notice, and only as needed for their services. Google and Apify process it for us under data processing terms that limit its use to providing their services to us and require them to keep it secure and confidential, so it receives the same or equal protection as this notice describes. YouTube, Pinterest, the platforms that host a post’s images and video, and the websites our server reads receive only our server’s request for public content, not your account or device information.
 
-We do not sell personal information, use it for targeted advertising, or track you across other companies’ apps and websites. Makemories contains no advertising or analytics software. Because we do not track you across other companies’ apps and websites, browser “Do Not Track” signals do not change how Makemories works. We do not allow other companies to collect information about your activity over time or across other apps and websites through Makemories.
+We do not sell personal information, use it for targeted advertising, or track you across other companies’ apps and websites. Makemories contains no advertising and does not use a product analytics service to track how you use the app. Firebase’s messaging and supporting software may collect limited technical information, such as SDK performance and app or device configuration, to operate and improve Firebase services. Firebase describes some of this information as not linked to a user or device identifier. These providers do not use it to track you across other companies’ apps and websites for advertising. Because we do not track you across other companies’ apps and websites, browser “Do Not Track” signals do not change how Makemories works. We do not allow other companies to collect information about your activity over time or across other apps and websites through Makemories.
 
 We may disclose information where legally required, to respond to a lawful request, or when necessary to protect people and the security of the service. We limit such disclosures to what the circumstances require.
 

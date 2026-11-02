@@ -8,7 +8,7 @@ import styles from "./legal.module.css";
 // Publish a new version by replacing the file and updating its commit.
 export const SOURCE_COMMITS = {
   "terms-of-use.md": "3096393bb6b27a87f0190f01e665824d1ea10f60",
-  "privacy-notice.md": "3096393bb6b27a87f0190f01e665824d1ea10f60",
+  "privacy-notice.md": "a8071a8f682653a9031b521e03786a26bb314634",
 } as const;
 
 type LegalFile = keyof typeof SOURCE_COMMITS;
