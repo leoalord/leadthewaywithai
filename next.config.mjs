@@ -12,6 +12,8 @@ const nextConfig = {
     // Standalone research pages live in public/ as self-contained HTML; serve them at their folder path.
     return [
       { source: "/research/numpy-to-rust-eval", destination: "/research/numpy-to-rust-eval/index.html" },
+      // Branded URL for the LearnAboutAlpha MCP server (Streamable HTTP), proxied to Cloud Run.
+      { source: "/LearnAboutAlpha/mcp", destination: "https://learningfocused-mcp-bfkatxntfq-uw.a.run.app/mcp" },
     ];
   },
 };
