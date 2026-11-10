@@ -3,6 +3,8 @@ type RepoCardProps = {
   url: string;
   description: string;
   image?: string;
+  linkLabel?: string;
+  secondary?: { label: string; href: string };
 };
 
 function GitHubMark() {
@@ -18,14 +20,24 @@ function GitHubMark() {
   );
 }
 
-export default function RepoCard({ name, url, description, image }: RepoCardProps) {
+function GlobeMark() {
   return (
-    <a
-      href={url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group flex flex-col rounded-xl border border-line bg-surface/60 p-7 transition-all hover:-translate-y-0.5 hover:border-slateblue-500/40 hover:shadow-lg hover:shadow-black/5"
-    >
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className="h-5 w-5">
+      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.6" />
+      <path
+        d="M3 12h18M12 3c2.5 2.6 3.75 5.6 3.75 9S14.5 18.4 12 21c-2.5-2.6-3.75-5.6-3.75-9S9.5 5.6 12 3Z"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+export default function RepoCard({ name, url, description, image, linkLabel, secondary }: RepoCardProps) {
+  const isGitHub = url.includes("github.com");
+  return (
+    <div className="group relative flex flex-col rounded-xl border border-line bg-surface/60 p-7 transition-all hover:-translate-y-0.5 hover:border-slateblue-500/40 hover:shadow-lg hover:shadow-black/5">
       {image && (
         <div className="mb-6 -mx-2 -mt-2 overflow-hidden rounded-lg border border-line/40">
           <img
@@ -37,7 +49,7 @@ export default function RepoCard({ name, url, description, image }: RepoCardProp
       )}
       <div className="flex items-center justify-between">
         <span className="text-muted transition-colors group-hover:text-fg">
-          <GitHubMark />
+          {isGitHub ? <GitHubMark /> : <GlobeMark />}
         </span>
         <svg
           viewBox="0 0 20 20"
@@ -55,14 +67,30 @@ export default function RepoCard({ name, url, description, image }: RepoCardProp
         </svg>
       </div>
       <h3 className="mt-5 font-mono text-base font-semibold text-fg">
-        {name}
+        {/* The ::after overlay makes the whole card open the main link. */}
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="after:absolute after:inset-0 after:rounded-xl focus:outline-none focus-visible:after:ring-2 focus-visible:after:ring-slateblue-500"
+        >
+          {name}
+        </a>
       </h3>
       <p className="mt-3 flex-1 font-sans text-base leading-relaxed text-fg/75">
         {description}
       </p>
-      <span className="mt-6 text-xs font-medium uppercase tracking-wider text-sage-500">
-        View on GitHub
-      </span>
-    </a>
+      <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-medium uppercase tracking-wider">
+        <span className="text-sage-500">{linkLabel ?? (isGitHub ? "View on GitHub" : "Visit site")}</span>
+        {secondary && (
+          <a
+            href={secondary.href}
+            className="relative z-10 text-terracotta-500 hover:text-terracotta-600 transition-colors"
+          >
+            {secondary.label} &rarr;
+          </a>
+        )}
+      </div>
+    </div>
   );
 }
