@@ -419,6 +419,21 @@ export default function Home() {
                   </a>
                 </div>
 
+                <div className="border-l-2 border-line/40 pl-4 py-1 hover:border-slateblue-500/60 transition-colors">
+                  <div className="flex items-center gap-2">
+                    <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-slateblue-500 bg-slateblue-500/10 px-2 py-0.5 rounded">Directory</span>
+                    <span className="font-mono text-xs text-muted">Search &amp; filter</span>
+                  </div>
+                  <h4 className="mt-2 font-display text-base font-semibold text-fg">
+                    <Link href="/writing/aaif-talk-directory" className="hover:text-terracotta-500 transition-colors">
+                      AGNTCon + MCPCon North America 2026: Talk Directory
+                    </Link>
+                  </h4>
+                  <p className="mt-1 text-sm text-fg/70">
+                    Every conference recording in one place, searchable by topic, presenter, and company, with a note on why each talk is worth an AI engineer&apos;s time.
+                  </p>
+                </div>
+
                 <div className="border-l-2 border-line/40 pl-4 py-1 hover:border-sage-500/60 transition-colors">
                   <div className="flex items-center gap-2">
                     <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-sage-500 bg-sage-500/10 px-2 py-0.5 rounded">Drafting</span>
