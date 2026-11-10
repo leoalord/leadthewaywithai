@@ -1,6 +1,6 @@
 import { isPrivatePreview, linkedinUrl, loadCatalog } from "./catalog";
 
-const PAGE_URL = "https://www.leadthewaywithai.com/writing/aaif-talk-directory";
+const PAGE_URL = "https://www.leadthewaywithai.com/writing/agntcon-mcpcon-na-2026-talks";
 
 // Plain-text version of the directory, meant to be handed to an AI agent.
 export function directoryMarkdown({ full }: { full: boolean }) {

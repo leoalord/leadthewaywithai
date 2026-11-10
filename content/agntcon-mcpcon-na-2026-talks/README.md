@@ -1,6 +1,6 @@
-# AAIF talk directory catalog
+# AGNTCon + MCPCon North America 2026 talk catalog
 
-Data for `/writing/aaif-talk-directory` (see `app/writing/aaif-talk-directory/`).
+Data for `/writing/agntcon-mcpcon-na-2026-talks` (see `app/writing/agntcon-mcpcon-na-2026-talks/`).
 
 | File | Committed | What it is |
 |---|---|---|
@@ -13,4 +13,4 @@ While the loaded catalog says `"access": "private-preview"`, the page shows a "P
 
 Shape: `{ "access": "...", "talks": [{ "id", "title", "description", "presenters": [{ "name", "company", "linkedin" (optional) }], "topics": [], "format", "whyWatch" }] }`. `id` is the YouTube video ID; watch links are built from it.
 
-To refresh the private preview from the research engine, convert its generated `artifacts/aaif-talk-directory/dist/catalog.js` (strip the `globalThis.AAIF_CATALOG = ` prefix and trailing `;`) into `catalog.private.json`.
+To refresh the private preview from the research engine, convert its generated `artifacts/agntcon-mcpcon-na-2026-talks/dist/catalog.js` (strip the `globalThis.AAIF_CATALOG = ` prefix and trailing `;`) into `catalog.private.json`.

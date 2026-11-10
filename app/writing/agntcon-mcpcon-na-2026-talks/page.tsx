@@ -3,8 +3,8 @@ import Link from "next/link";
 import { isPrivatePreview, loadCatalog } from "./catalog";
 import TalkDirectory from "./TalkDirectory";
 
-const PAGE_URL = "https://www.leadthewaywithai.com/writing/aaif-talk-directory";
-const TITLE = "AGNTCon + MCPCon 2026 Talk Directory";
+const PAGE_URL = "https://www.leadthewaywithai.com/writing/agntcon-mcpcon-na-2026-talks";
+const TITLE = "AGNTCon + MCPCon North America 2026 Talk Directory";
 const DESCRIPTION =
   "Find an AGNTCon + MCPCon North America 2026 talk by topic, presenter, or company, with a note on why it might be worth an AI engineer's time.";
 
@@ -51,14 +51,14 @@ export default function AaifTalkDirectoryPage() {
           <p className="mt-4 text-base leading-relaxed text-fg/75">
             Asking an agent what to watch? Give it the{" "}
             <a
-              href="/writing/aaif-talk-directory.md"
+              href="/writing/agntcon-mcpcon-na-2026-talks.md"
               className="font-medium text-slateblue-500 underline underline-offset-4 transition-colors hover:text-terracotta-500"
             >
               plain-text version
             </a>{" "}
             or the{" "}
             <a
-              href="/writing/aaif-talk-directory-full.md"
+              href="/writing/agntcon-mcpcon-na-2026-talks-full.md"
               className="font-medium text-slateblue-500 underline underline-offset-4 transition-colors hover:text-terracotta-500"
             >
               version with full descriptions

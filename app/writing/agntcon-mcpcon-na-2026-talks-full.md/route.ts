@@ -1,4 +1,4 @@
-import { markdownResponse } from "../aaif-talk-directory/markdown";
+import { markdownResponse } from "../agntcon-mcpcon-na-2026-talks/markdown";
 
 export const dynamic = "force-static";
 
