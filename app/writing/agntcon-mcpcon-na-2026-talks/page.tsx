@@ -23,7 +23,10 @@ export const metadata: Metadata = {
 };
 
 export default function AaifTalkDirectoryPage() {
-  const talks = catalog?.talks ?? [];
+  // Feature keynotes first while preserving playlist order within each group.
+  const talks = [...(catalog?.talks ?? [])].sort(
+    (a, b) => Number(b.format === "Keynote") - Number(a.format === "Keynote"),
+  );
 
   return (
     <div className="mx-auto max-w-content px-5 2xl:max-w-[96rem] pb-8 pt-12 sm:px-8 sm:pt-16">
