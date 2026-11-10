@@ -21,7 +21,7 @@ export type Talk = {
 
 export type Catalog = { access?: string; talks: Talk[] };
 
-const DIR = path.join(process.cwd(), "content", "aaif-talk-directory");
+const DIR = path.join(process.cwd(), "content", "agntcon-mcpcon-na-2026-talks");
 
 // catalog.json is the reviewed, public catalog and is the only one that may be
 // committed. catalog.private.json is the full local preview (unlisted

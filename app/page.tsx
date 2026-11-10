@@ -425,7 +425,7 @@ export default function Home() {
                     <span className="font-mono text-xs text-muted">Search &amp; filter</span>
                   </div>
                   <h4 className="mt-2 font-display text-base font-semibold text-fg">
-                    <Link href="/writing/aaif-talk-directory" className="hover:text-terracotta-500 transition-colors">
+                    <Link href="/writing/agntcon-mcpcon-na-2026-talks" className="hover:text-terracotta-500 transition-colors">
                       AGNTCon + MCPCon North America 2026: Talk Directory
                     </Link>
                   </h4>

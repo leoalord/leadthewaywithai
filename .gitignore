@@ -27,5 +27,5 @@ next-env.d.ts
 .env*.local
 .env
 
-# AAIF talk directory: private preview catalog (unlisted recordings, not cleared for publishing)
-/content/aaif-talk-directory/catalog.private.json
+# AGNTCon + MCPCon NA 2026 talk directory: private preview catalog (unlisted recordings, not cleared for publishing)
+/content/agntcon-mcpcon-na-2026-talks/catalog.private.json
