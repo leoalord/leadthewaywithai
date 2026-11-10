@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Featured project previews</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Poppins:wght@500;600&display=swap">
+<style>
+  :root {
+    --charcoal: #1a1815;
+    --surface: #262320;
+    --cream: #f0eee6;
+    --terracotta: #d97757;
+    --sage: #9dae7b;
+    --slate: #6a8cae;
+    --line: rgb(240 238 230 / 15%);
+    --display: Poppins, sans-serif;
+    --mono: "JetBrains Mono", monospace;
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--charcoal); color: var(--cream); }
+  [hidden] { display: none !important; }
+
+  .preview {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    width: 1600px;
+    height: 1000px;
+    padding: 108px 104px;
+  }
+
+  .terrain {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: .25;
+  }
+
+  h1 {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    margin: 0;
+    font: 600 60px/1.2 var(--display);
+  }
+
+  h1::before {
+    content: "";
+    width: 52px;
+    height: 8px;
+    border-radius: 4px;
+    background: var(--terracotta);
+  }
+
+  .flow { display: block; width: 100%; margin-top: 130px; }
+  .flow text { fill: var(--cream); font: 500 54px var(--display); }
+  .flow .small { font-size: 49px; }
+  .flow .box { fill: var(--surface); stroke-width: 4px; }
+  .flow .connector { fill: none; stroke: var(--sage); stroke-width: 5px; }
+
+  .tools {
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    gap: 0 72px;
+    margin: 118px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .tools li {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    height: 108px;
+    border-bottom: 3px solid var(--line);
+    font: 500 53px/1 var(--mono);
+  }
+
+  .tools li::before {
+    content: "";
+    flex: 0 0 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--sage);
+  }
+
+  .tools li:nth-child(n+6)::before { background: var(--slate); }
+
+  .chart {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 72px;
+    margin-top: 60px;
+  }
+
+  .axis, .result {
+    display: grid;
+    grid-template-columns: 378px 1fr;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .axis {
+    margin-bottom: 12px;
+    color: var(--cream);
+    font: 500 45px/1 var(--mono);
+  }
+
+  .axis span { display: flex; justify-content: space-between; }
+  .result { height: 68px; font: 500 47px/1 var(--display); white-space: nowrap; }
+  .track { height: 16px; background: var(--line); border-radius: 8px; }
+  .bar { height: 100%; background: var(--sage); border-radius: inherit; }
+  .chart > div:nth-child(2) .bar { background: var(--slate); }
+</style>
+<script src="first-try.js" defer></script>
+</head>
+<body>
+<section class="preview" id="revel">
+  <img class="terrain" src="terrain-a.svg" alt="">
+  <h1>Permission check</h1>
+  <!-- Concept diagram based on Revel's public description and this site's project card. -->
+  <svg class="flow" viewBox="0 0 1392 490" role="img" aria-label="Your assistant and a friend's assistant connect through Revel. The friend's gift plan stays private.">
+    <path class="connector" d="M380 110h113m406 0h113"/>
+    <path class="connector" d="M1208 206v96" stroke-dasharray="10 13"/>
+    <rect class="box" x="2" y="12" width="364" height="194" rx="28" stroke="#788c5d"/>
+    <rect class="box" x="508" y="12" width="376" height="194" rx="28" stroke="#d97757"/>
+    <rect class="box" x="1026" y="12" width="364" height="194" rx="28" stroke="#6a8cae"/>
+    <g text-anchor="middle">
+      <text x="184" y="96">Your<tspan x="184" dy="62">assistant</tspan></text>
+      <text x="696" y="130">Revel</text>
+      <text x="1208" y="96">Friend’s<tspan x="1208" dy="62">assistant</tspan></text>
+    </g>
+    <rect class="box" x="1006" y="302" width="384" height="128" rx="28" stroke="#6a8cae"/>
+    <path d="M1044 365v-11a14 14 0 0 1 28 0v11m-31 0h34v29h-34z" fill="none" stroke="#9dae7b" stroke-width="5" stroke-linejoin="round"/>
+    <text class="small" x="1094" y="353">Private<tspan x="1094" dy="52">gift plan</tspan></text>
+  </svg>
+</section>
+
+<section class="preview" id="spotify-mcp-server" hidden>
+  <img class="terrain" src="terrain-b.svg" alt="">
+  <h1>Self-hosted MCP tools</h1>
+  <!-- Tools table in spotify-mcp-server/README.md, in source order. -->
+  <ul class="tools">
+    <li>search_catalog</li>
+    <li>get_item</li>
+    <li>player_status</li>
+    <li>player_control</li>
+    <li>playlist_read</li>
+    <li>playlist_modify</li>
+    <li>library_read</li>
+    <li>library_modify</li>
+    <li>listening_activity</li>
+  </ul>
+</section>
+
+<section class="preview" id="numpy-to-rust-eval" hidden>
+  <img class="terrain" src="terrain-c.svg" alt="">
+  <h1>First-try accuracy</h1>
+  <div class="chart" aria-label="First-try accuracy across the 17 evaluated models"></div>
+  <template id="chart-column">
+    <div>
+      <div class="axis"><span></span><span><b>0%</b><b>100%</b></span></div>
+    </div>
+  </template>
+  <template id="chart-row">
+    <div class="result">
+      <span class="model"></span>
+      <div class="track"><div class="bar"></div></div>
+    </div>
+  </template>
+</section>
+
+<script>
+  const sections = document.querySelectorAll(".preview");
+  function selectPreview() {
+    const selected = document.getElementById(location.hash.slice(1));
+    for (const section of sections) {
+      section.hidden = section !== (selected?.matches(".preview") ? selected : sections[0]);
+    }
+  }
+  selectPreview();
+  window.addEventListener("hashchange", selectPreview);
+</script>
+</body>
+</html>

@@ -64,6 +64,7 @@ const timeline = [
 const repos = [
   {
     name: "Revel",
+    image: "/projects/revel.png",
     url: "https://revel.gifts/",
     description:
       "Gifting profiles for AI assistants. Your assistant helps build your profile, you choose who sees each detail, and a friend's assistant can ask follow-ups without revealing the gift plan.",
@@ -71,6 +72,7 @@ const repos = [
   },
   {
     name: "Spotify MCP Server",
+    image: "/projects/spotify-mcp-server.png",
     url: "https://huggingface.co/spaces/LeoWalker/spotify-mcp-server",
     description:
       "A self-hostable MCP server that bundles the Spotify Web API into nine agent-friendly tools, with OAuth 2.1 for remote hosting. Works with any MCP client that can reach it.",
@@ -78,6 +80,7 @@ const repos = [
   },
   {
     name: "NumPy-to-Rust Eval",
+    image: "/projects/numpy-to-rust-eval.png",
     url: "https://github.com/leoalord/numpy-to-rust-eval",
     description:
       "Seventeen language models translating 39 NumPy and radar workloads into Rust under one harness, graded on held-out cases.",
