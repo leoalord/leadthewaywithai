@@ -59,50 +59,68 @@ const timeline = [
   }
 ];
 
+// Featured projects. To add a preview, put a 16:10 image in public/projects/
+// and set `image` on the entry (for example image: "/projects/revel.png").
 const repos = [
   {
-    name: "Search Arena",
-    url: "https://huggingface.co/spaces/LeoWalker/SearchArena",
+    name: "Revel",
+    image: "/projects/revel.png",
+    url: "https://revel.gifts/",
     description:
-      "A deployed HuggingFace comparison interface built to evaluate and benchmark search engine results and retrieval ranking models. Created June 2024.",
-    image: "/search_arena.png",
+      "Gifting profiles for AI assistants. Your assistant helps build your profile, you choose who sees each detail, and a friend's assistant can ask follow-ups without revealing the gift plan.",
+    linkLabel: "Visit revel.gifts",
   },
   {
-    name: "Resume & Job Description Parsers",
-    url: "https://huggingface.co/spaces/LeoWalker/ResumeParser",
+    name: "Spotify MCP Server",
+    image: "/projects/spotify-mcp-server.png",
+    url: "https://huggingface.co/spaces/LeoWalker/spotify-mcp-server",
     description:
-      "A dual-space deployment comprising an intelligent resume parser and a targeted job description formatter built to optimize candidate matchmaking. Created January 2024.",
-    image: "/resume_parser.png",
+      "A self-hostable MCP server that bundles the Spotify Web API into nine agent-friendly tools, with OAuth 2.1 for remote hosting. Works with any MCP client that can reach it.",
+    linkLabel: "View on Hugging Face",
   },
+  {
+    name: "NumPy-to-Rust Eval",
+    image: "/projects/numpy-to-rust-eval.png",
+    url: "https://github.com/leoalord/numpy-to-rust-eval",
+    description:
+      "Seventeen language models translating 39 NumPy and radar workloads into Rust under one harness, graded on held-out cases.",
+    linkLabel: "View on GitHub",
+    secondary: { label: "Read the write-up", href: "/research/numpy-to-rust-eval" },
+  },
+];
+
+const earlierProjects = [
   {
     name: "First Principles Thinking Skills",
     url: "https://github.com/leoalord/first-principles-thinking-skills",
-    description:
-      "Chained agentic skills and system prompts engineered to drive structured first-principles reasoning inside tools like Cursor, Claude Code, and Codex CLI.",
-    image: "/thinking_skills.png",
+    note: "Agent skills for structured reasoning",
   },
   {
     name: "LLM Composition Patterns",
     url: "https://github.com/leoalord/llm-composition-patterns",
-    description:
-      "A robust Python codebase demonstrating structural design patterns for cascading, parallelizing, and deterministic evaluating complex LLM calls in production.",
+    note: "Design patterns for chaining LLM calls",
+  },
+  {
+    name: "Search Arena",
+    url: "https://huggingface.co/spaces/LeoWalker/SearchArena",
+    note: "Search result comparison, 2024",
+  },
+  {
+    name: "Resume & Job Description Parsers",
+    url: "https://huggingface.co/spaces/LeoWalker/ResumeParser",
+    note: "Structured parsing, 2024",
   },
 ];
 
 const services = [
   {
     title: "Engineering",
-    body: "Designing and shipping production-grade AI systems. Specializing in modular agentic workflows, custom Model Context Protocol (MCP) integrations, robust NLP pipelines, and HIPAA-compliant clinical AI architectures.",
+    body: "Agentic workflows, MCP servers, evaluations, and clinical AI systems, built to run in production.",
     cta: "Inquire about engineering",
   },
   {
-    title: "Workshops & Training",
-    body: "Intense, code-forward training sessions for engineering teams. Hands-on modules covering LLM composition patterns, agent tool calling, deterministic evaluation frameworks, and MLOps best practices.",
-    cta: "Book a workshop",
-  },
-  {
     title: "Advisory & Tech Diligence",
-    body: "Providing strategic guidance on AI roadmaps, scaling large-scale analytics (drawing on BP experience), and rigorous technical due diligence for venture capital and private equity investors (drawing on IVP experience).",
+    body: "AI roadmap and architecture guidance for teams, and technical due diligence for venture and private equity investors.",
     cta: "Request advisory",
   },
 ];
@@ -218,7 +236,7 @@ export default function Home() {
                 I build <span className="bg-gradient-to-r from-sage-400 to-slateblue-400 bg-clip-text text-transparent font-semibold">effective AI systems</span> engineered for critical operations.
               </h1>
               <p className="mt-6 max-w-3xl font-sans text-base sm:text-lg lg:text-xl leading-relaxed text-fg/90">
-                I build, teach, and write about practical AI systems: agentic workflows, MCP/tooling, data pipelines, and clinical AI. Formerly AI Engineer at KaiCare.ai.
+                I build and write about practical AI systems: agentic workflows, MCP/tooling, data pipelines, and clinical AI. Formerly AI Engineer at KaiCare.ai.
               </p>
               <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <Link
@@ -290,15 +308,15 @@ export default function Home() {
             id="services-heading"
             className="mt-3 font-display text-2xl font-semibold tracking-tight text-fg sm:text-4xl"
           >
-            AI engineering, workshops, and advisory built for momentum.
+            AI engineering, advisory, and technical diligence.
           </h2>
           <p className="mt-4 text-base sm:text-lg leading-relaxed text-fg/85">
-            I partner with tech leaders, enterprise teams, and venture investors to design, validate, and scale practical AI and analytical systems. No hype: just rigorous engineering.
+            I help teams and investors design, validate, and ship practical AI systems.
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
           {services.map((service) => (
             <div
               key={service.title}
@@ -308,11 +326,11 @@ export default function Home() {
                 <h3 className="font-display text-lg sm:text-xl font-semibold text-fg">
                   {service.title}
                 </h3>
-                <p className="mt-4 font-sans text-sm sm:text-base leading-relaxed text-fg/85">
+                <p className="mt-3 font-sans text-sm sm:text-base leading-relaxed text-fg/85">
                   {service.body}
                 </p>
               </div>
-              <div className="mt-8 pt-4 border-t border-line/25">
+              <div className="mt-6 pt-4 border-t border-line/25">
                 <Link
                   href="#contact"
                   className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-widest text-terracotta-500 hover:text-terracotta-600 transition-colors"
@@ -324,8 +342,15 @@ export default function Home() {
           ))}
         </div>
 
+        <p className="mt-6 text-sm text-muted">
+          I also run the occasional workshop for engineering teams.{" "}
+          <Link href="#contact" className="font-semibold text-terracotta-500 hover:text-terracotta-600 transition-colors">
+            Ask about one &rarr;
+          </Link>
+        </p>
+
         {/* Focus areas */}
-        <div className="mt-12">
+        <div className="mt-8">
           <ul className="flex flex-wrap gap-2.5">
             {focusAreas.map((area) => (
               <li
@@ -352,14 +377,36 @@ export default function Home() {
             What I&apos;ve built
           </h2>
           <p className="mt-4 text-base sm:text-lg text-fg/75">
-            Open-source repositories, agent skills, and deployed AI spaces built to solve practical workflow and data parsing challenges.
+            Recent products, MCP servers, and evaluations.
           </p>
         </div>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2">
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {repos.map((repo) => (
             <RepoCard key={repo.name} {...repo} />
           ))}
+        </div>
+
+        {/* Earlier projects: compact links, no previews */}
+        <div className="mt-10">
+          <h3 className="text-xs font-semibold uppercase tracking-widest text-muted">
+            Earlier projects
+          </h3>
+          <ul className="mt-4 grid gap-x-8 gap-y-3 sm:grid-cols-2">
+            {earlierProjects.map((project) => (
+              <li key={project.name} className="border-l-2 border-line/40 pl-4 hover:border-terracotta-500/60 transition-colors">
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono text-sm font-semibold text-fg hover:text-terracotta-500 transition-colors"
+                >
+                  {project.name}
+                </a>
+                <span className="block text-sm text-fg/70">{project.note}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
@@ -650,7 +697,7 @@ export default function Home() {
             Start a conversation
           </h2>
           <p className="mt-4 max-w-prose font-sans text-sm sm:text-base leading-relaxed text-fg/75">
-            If you are looking for clinical AI expertise, rigorous technical diligence, or engineering mentorship, get in touch today.
+            If you are looking for AI engineering, advisory, or technical diligence, get in touch.
           </p>
           
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">
